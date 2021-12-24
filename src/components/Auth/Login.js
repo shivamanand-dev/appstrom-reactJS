@@ -4,7 +4,7 @@ import { Form, Button } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 
 const Login = (props) => {
-  const baseURL = "https://20.122.157.18:443/api/auth";
+  const baseURL = "http://localhost:5500/api/auth";
   // State on change
   const [credential, setCredential] = useState({
     username: "",
