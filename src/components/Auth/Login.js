@@ -77,7 +77,7 @@ const Login = (props) => {
             value={credential.password}
           />
         </Form.Group>
-        <Form.Group className="mb-3" controlId="formBasicCheckbox">
+        <Form.Group className="mb-3">
           <Link to="/signup" style={{ boxShadow: "none" }}>
             Not yet Registered? SignUp
           </Link>
