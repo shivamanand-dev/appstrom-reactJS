@@ -48,3 +48,5 @@ function App() {
 }
 
 export default App;
+
+    // "start": "set PORT=80 && react-scripts start",
