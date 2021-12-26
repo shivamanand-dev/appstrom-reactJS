@@ -35,7 +35,11 @@ function App() {
               element={<Login showAlert={showAlert} />}
             ></Route>
             {/* Sign up */}
-            <Route exact path="/signup" element={<Signup />}></Route>
+            <Route
+              exact
+              path="/signup"
+              element={<Signup showAlert={showAlert} />}
+            ></Route>
           </Routes>
         </div>
       </Router>

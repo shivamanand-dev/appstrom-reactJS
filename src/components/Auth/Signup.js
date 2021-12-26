@@ -4,14 +4,14 @@ import { Form, Button } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 
 const Signup = (props) => {
-  const baseURL = "http://localhost:5500/api/auth";
+  const baseURL = process.env.REACT_APP_AUTH_BASE_URL;
   // State on change
   const [credential, setCredential] = useState({
     name: "",
     email: "",
     username: "",
     password: "",
-    promocode: "hellopass",
+    promocode: "",
     appliedPromocode: "",
     openningBalance: 0,
   });
@@ -22,7 +22,7 @@ const Signup = (props) => {
   // HandleSubmit
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // // Fetch
+    // Fetch
     const response = await fetch(`${baseURL}/signup`, {
       method: "POST",
       headers: {
@@ -39,7 +39,7 @@ const Signup = (props) => {
     } else {
       props.showAlert(resJSON.error, "danger");
     }
-    console.log(credential);
+    console.log(credential, baseURL);
   };
 
   //   Handle OnChange
@@ -48,6 +48,9 @@ const Signup = (props) => {
       ...credential,
       [e.target.name]: e.target.value,
     });
+
+    // console.log(credential, "cred");
+    // console.log(e.target.name, ":", e.target.value);
   };
   return (
     <div className="mt-3">
@@ -114,22 +117,20 @@ const Signup = (props) => {
             placeholder="PromoCode"
             name="appliedPromocode"
             value={credential.appliedPromocode}
-            required
             minLength={3}
           />
         </Form.Group>
 
-        <Form.Group className="mb-3">
+        {/* <Form.Group className="mb-3">
           <Form.Label htmlFor="promocode">Your PromoCode</Form.Label>
           <Form.Control
-            onChange={handleOnChange}
             type="text"
             placeholder="PromoCode"
-            name="username"
+            name="promocode"
+            onChange={handleOnChange}
             value={credential.username}
-            disabled
           />
-        </Form.Group>
+        </Form.Group> */}
 
         <Form.Group className="mb-3">
           <Link to="/login" style={{ boxShadow: "none" }}>

@@ -4,7 +4,7 @@ import { Form, Button } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 
 const Login = (props) => {
-  const baseURL = "http://localhost:5500/api/auth";
+  const REACT_APP_AUTH_BASE_URL = process.env.REACT_APP_AUTH_BASE_URL;
   // State on change
   const [credential, setCredential] = useState({
     username: "",
@@ -18,7 +18,7 @@ const Login = (props) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     // Fetch
-    const response = await fetch(`${baseURL}/login`, {
+    const response = await fetch(`${REACT_APP_AUTH_BASE_URL}/login`, {
       method: "POST",
       headers: {
         "Content-type": "application/json",
