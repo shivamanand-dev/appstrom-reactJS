@@ -17,6 +17,7 @@ const Login = (props) => {
   // HandleSubmit
   const handleSubmit = async (e) => {
     e.preventDefault();
+    props.setNavProgress(10);
     // Fetch
     const response = await fetch(`${REACT_APP_AUTH_BASE_URL}/login`, {
       method: "POST",
@@ -25,14 +26,18 @@ const Login = (props) => {
       },
       body: JSON.stringify(credential),
     });
+    props.setNavProgress(70);
     const resJSON = await response.json();
     console.log(resJSON);
 
     if (resJSON.success) {
-      navigate("/");
+      localStorage.setItem("token", resJSON.authToken);
+      navigate("/profile");
       props.showAlert("Logged in successfully", "success");
+      props.setNavProgress(100);
     } else {
       props.showAlert(resJSON.error, "danger");
+      props.setNavProgress(100);
     }
   };
 
@@ -64,7 +69,6 @@ const Login = (props) => {
             We'll never share your email with anyone else.
           </Form.Text>
         </Form.Group>
-
         <Form.Group className="mb-3">
           <Form.Label htmlFor="password">Password</Form.Label>
           <Form.Control

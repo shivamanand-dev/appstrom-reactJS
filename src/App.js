@@ -7,9 +7,17 @@ import Alert from "./components/Alert";
 import React, { useState } from "react";
 import Login from "./components/Auth/Login";
 import Signup from "./components/Auth/Signup";
+import LoadingBar from "react-top-loading-bar";
+import Profile from "./components/Profile/Profile";
 
 function App() {
+  const [progress, setProgress] = useState(0);
   const [alert, setAlert] = useState(null);
+
+  const setNavProgress = (progress) => {
+    setProgress(progress);
+  };
+
   const showAlert = (message, type) => {
     setAlert({
       msg: message,
@@ -25,20 +33,43 @@ function App() {
         <MainNavbar />
         <Alert alert={alert} />
         <div className="container mt-3">
+          <LoadingBar color="#f11946" progress={progress} />
           <Routes>
-            <Route exact path="/" element={<Home />}></Route>
-            <Route exact path="/about" element={<About />}></Route>
+            <Route
+              exact
+              path="/"
+              element={<Home setNavProgress={setNavProgress} />}
+            ></Route>
+            <Route
+              exact
+              path="/about"
+              element={<About setNavProgress={setNavProgress} />}
+            ></Route>
             {/* Login */}
             <Route
               exact
               path="/login"
-              element={<Login showAlert={showAlert} />}
+              element={
+                <Login setNavProgress={setNavProgress} showAlert={showAlert} />
+              }
             ></Route>
             {/* Sign up */}
             <Route
               exact
               path="/signup"
-              element={<Signup showAlert={showAlert} />}
+              element={
+                <Signup setNavProgress={setNavProgress} showAlert={showAlert} />
+              }
+            ></Route>
+            <Route
+              exact
+              path="/profile"
+              element={
+                <Profile
+                  setNavProgress={setNavProgress}
+                  showAlert={showAlert}
+                />
+              }
             ></Route>
           </Routes>
         </div>
@@ -49,4 +80,4 @@ function App() {
 
 export default App;
 
-    // "start": "set PORT=80 && react-scripts start",
+// "start": "set PORT=80 && react-scripts start",

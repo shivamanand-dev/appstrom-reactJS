@@ -22,6 +22,7 @@ const Signup = (props) => {
   // HandleSubmit
   const handleSubmit = async (e) => {
     e.preventDefault();
+    props.setNavProgress(3);
     // Fetch
     const response = await fetch(`${baseURL}/signup`, {
       method: "POST",
@@ -30,14 +31,18 @@ const Signup = (props) => {
       },
       body: JSON.stringify(credential),
     });
+    props.setNavProgress(70);
     const resJSON = await response.json();
     // console.log(resJSON);
 
     if (resJSON.success) {
+      localStorage.setItem("token", resJSON.authToken);
       navigate("/");
       props.showAlert("Logged in successfully", "success");
+      props.setNavProgress(100);
     } else {
       props.showAlert(resJSON.error, "danger");
+      props.setNavProgress(100);
     }
     console.log(credential, baseURL);
   };
