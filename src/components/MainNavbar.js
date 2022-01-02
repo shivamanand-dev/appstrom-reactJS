@@ -1,13 +1,20 @@
 import { React, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../App.css";
-import { Navbar, Container, Nav } from "react-bootstrap";
+import { Navbar, Container, Nav, Button } from "react-bootstrap";
 
 const MainNavbar = () => {
   let location = useLocation();
+  const navigate = useNavigate();
+
   useEffect(() => {}, [location]);
   // console.log(location.pathname);
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    navigate("/login");
+  };
   return (
     <div>
       <Navbar bg="dark" variant="dark" expand="lg">
@@ -38,20 +45,32 @@ const MainNavbar = () => {
                 About
               </Link>
             </Nav>
-            <Link
-              to="/login"
-              className="btn btn-outline-primary mx-1"
-              style={{ boxShadow: "none" }}
-            >
-              SignIn
-            </Link>
-            <Link
-              to="/signup"
-              className="btn btn-outline-primary mx-1"
-              style={{ boxShadow: "none" }}
-            >
-              SignUp
-            </Link>
+            {!localStorage.getItem("token") ? (
+              <>
+                <Link
+                  to="/login"
+                  className="btn btn-outline-primary mx-1"
+                  style={{ boxShadow: "none" }}
+                >
+                  SignIn
+                </Link>
+                <Link
+                  to="/signup"
+                  className="btn btn-outline-primary mx-1"
+                  style={{ boxShadow: "none" }}
+                >
+                  SignUp
+                </Link>
+              </>
+            ) : (
+              <Button
+                variant="outline-danger"
+                className="mx-1"
+                onClick={handleLogout}
+              >
+                Log Out
+              </Button>
+            )}
           </Navbar.Collapse>
         </Container>
       </Navbar>

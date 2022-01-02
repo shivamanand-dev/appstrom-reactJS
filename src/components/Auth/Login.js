@@ -4,7 +4,7 @@ import { Form, Button } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 
 const Login = (props) => {
-  const baseURL = "http://localhost:5500/api/auth";
+  const REACT_APP_AUTH_BASE_URL = process.env.REACT_APP_AUTH_BASE_URL;
   // State on change
   const [credential, setCredential] = useState({
     username: "",
@@ -17,22 +17,27 @@ const Login = (props) => {
   // HandleSubmit
   const handleSubmit = async (e) => {
     e.preventDefault();
+    props.setNavProgress(10);
     // Fetch
-    const response = await fetch(`${baseURL}/login`, {
+    const response = await fetch(`${REACT_APP_AUTH_BASE_URL}/login`, {
       method: "POST",
       headers: {
         "Content-type": "application/json",
       },
       body: JSON.stringify(credential),
     });
+    props.setNavProgress(70);
     const resJSON = await response.json();
     console.log(resJSON);
 
     if (resJSON.success) {
-      navigate("/");
+      localStorage.setItem("token", resJSON.authToken);
+      navigate("/profile");
       props.showAlert("Logged in successfully", "success");
+      props.setNavProgress(100);
     } else {
       props.showAlert(resJSON.error, "danger");
+      props.setNavProgress(100);
     }
   };
 
@@ -64,7 +69,6 @@ const Login = (props) => {
             We'll never share your email with anyone else.
           </Form.Text>
         </Form.Group>
-
         <Form.Group className="mb-3">
           <Form.Label htmlFor="password">Password</Form.Label>
           <Form.Control
