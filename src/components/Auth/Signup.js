@@ -35,11 +35,10 @@ const Signup = (props) => {
 
     if (resJSON.success) {
       navigate("/");
-      props.showAlert("Logged in successfully", "success");
+      props.showAlert("Signed up successfully", "success");
     } else {
       props.showAlert(resJSON.error, "danger");
     }
-    console.log(credential);
   };
 
   //   Handle OnChange
