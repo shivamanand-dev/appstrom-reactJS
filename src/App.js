@@ -33,7 +33,7 @@ function App() {
         <MainNavbar />
         <Alert alert={alert} />
         <div className="container mt-3">
-          <LoadingBar color="#f11946" progress={progress} />
+          <LoadingBar color="#f11946" height={2} progress={progress} />
           <Routes>
             <Route
               exact
