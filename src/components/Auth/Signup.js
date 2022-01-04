@@ -16,6 +16,8 @@ const Signup = (props) => {
     openningBalance: 0,
   });
 
+  document.title = "AppStrom - Sign Up";
+
   //   Navigate
   const navigate = useNavigate();
 
@@ -37,7 +39,7 @@ const Signup = (props) => {
 
     if (resJSON.success) {
       localStorage.setItem("token", resJSON.authToken);
-      navigate("/");
+      navigate("/profile");
       props.showAlert("Signed up successfully", "success");
       props.showAlert("Logged in successfully", "success");
       props.setNavProgress(100);

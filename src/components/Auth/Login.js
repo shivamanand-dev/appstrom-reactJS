@@ -4,6 +4,7 @@ import { Form, Button } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 
 const Login = (props) => {
+  document.title = "AppStrom - Sign In";
   const REACT_APP_AUTH_BASE_URL = process.env.REACT_APP_AUTH_BASE_URL;
   // State on change
   const [credential, setCredential] = useState({
