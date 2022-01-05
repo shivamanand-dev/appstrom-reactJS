@@ -1,18 +1,15 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
-// import { bindActionCreators } from "redux";
 import { fetchUsers } from "../../redux";
+import { setNavProgress } from "../../redux";
 
-const Profile = ({ fetchUsers, userData }) => {
-  // const dispatch = useDispatch();
-  // const state = useSelector((state) => state.user);
-
-  // const { fetchUsers } = bindActionCreators(actionCreators, dispatch);
-
+const Profile = ({ fetchUsers, userData, setNavProgress }) => {
   useEffect(() => {
+    setNavProgress(100);
     fetchUsers();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
   return userData.loading ? (
     <h2>Loading</h2>
   ) : userData.error ? (
@@ -20,6 +17,7 @@ const Profile = ({ fetchUsers, userData }) => {
   ) : (
     <div>
       <h2>Users List</h2>
+      {console.log(userData)}
       <div>
         {userData &&
           userData.users &&
@@ -32,12 +30,14 @@ const Profile = ({ fetchUsers, userData }) => {
 const mapStateToProps = (state) => {
   return {
     userData: state.user,
+    progress: state.progress.progress,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
     fetchUsers: () => dispatch(fetchUsers()),
+    setNavProgress: (progress) => dispatch(setNavProgress(progress)),
   };
 };
 
