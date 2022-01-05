@@ -1,0 +1,2 @@
+export const SET_ALERT_MESSAGE = "SET_ALERT_MESSAGE";
+export const SET_ALERT_NULL = "SET_ALERT_NULL";
