@@ -4,73 +4,46 @@ import MainNavbar from "./components/MainNavbar";
 import About from "./components/About";
 import Home from "./components/Home";
 import Alert from "./components/Alert";
-import React, { useState } from "react";
+import React from "react";
 import Login from "./components/Auth/Login";
 import Signup from "./components/Auth/Signup";
 import LoadingBar from "react-top-loading-bar";
 import Profile from "./components/Profile/Profile";
+import { useSelector } from "react-redux";
 
 function App() {
-  const [progress, setProgress] = useState(0);
-  const [alert, setAlert] = useState(null);
+  // const [progress, setProgress] = useState(0);
+  const state = useSelector((state) => state.progress);
+  // const [alert, setAlert] = useState(null);
 
-  const setNavProgress = (progress) => {
-    setProgress(progress);
-  };
+  // const setNavProgress = (progress) => {
+  //   setProgress(progress);
+  // };
 
-  const showAlert = (message, type) => {
-    setAlert({
-      msg: message,
-      type: type,
-    });
-    setTimeout(() => {
-      setAlert(null);
-    }, 1500);
-  };
+  // const showAlert = (message, type) => {
+  //   setAlert({
+  //     msg: message,
+  //     type: type,
+  //   });
+  //   setTimeout(() => {
+  //     setAlert(null);
+  //   }, 1500);
+  // };
   return (
     <div>
       <Router>
         <MainNavbar />
-        <Alert alert={alert} />
+        <Alert />
         <div className="container mt-3">
-          <LoadingBar color="#f11946" height={2} progress={progress} />
+          <LoadingBar color="#f11946" height={2} progress={state.progress} />
           <Routes>
-            <Route
-              exact
-              path="/"
-              element={<Home setNavProgress={setNavProgress} />}
-            ></Route>
-            <Route
-              exact
-              path="/about"
-              element={<About setNavProgress={setNavProgress} />}
-            ></Route>
+            <Route exact path="/" element={<Home />}></Route>
+            <Route exact path="/about" element={<About />}></Route>
             {/* Login */}
-            <Route
-              exact
-              path="/login"
-              element={
-                <Login setNavProgress={setNavProgress} showAlert={showAlert} />
-              }
-            ></Route>
+            <Route exact path="/login" element={<Login />}></Route>
             {/* Sign up */}
-            <Route
-              exact
-              path="/signup"
-              element={
-                <Signup setNavProgress={setNavProgress} showAlert={showAlert} />
-              }
-            ></Route>
-            <Route
-              exact
-              path="/profile"
-              element={
-                <Profile
-                  setNavProgress={setNavProgress}
-                  showAlert={showAlert}
-                />
-              }
-            ></Route>
+            <Route exact path="/signup" element={<Signup />}></Route>
+            <Route exact path="/profile" element={<Profile />}></Route>
           </Routes>
         </div>
       </Router>
