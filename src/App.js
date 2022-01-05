@@ -14,21 +14,11 @@ import { useSelector } from "react-redux";
 function App() {
   // const [progress, setProgress] = useState(0);
   const state = useSelector((state) => state.progress);
-  // const [alert, setAlert] = useState(null);
 
   // const setNavProgress = (progress) => {
   //   setProgress(progress);
   // };
 
-  // const showAlert = (message, type) => {
-  //   setAlert({
-  //     msg: message,
-  //     type: type,
-  //   });
-  //   setTimeout(() => {
-  //     setAlert(null);
-  //   }, 1500);
-  // };
   return (
     <div>
       <Router>
