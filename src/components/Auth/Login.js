@@ -2,8 +2,10 @@ import { React, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Form, Button } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
+import { connect } from "react-redux";
+import { setAlert } from "../../redux";
 
-const Login = (props) => {
+const Login = ({ setAlert }) => {
   document.title = "AppStrom - Sign In";
   const REACT_APP_AUTH_BASE_URL = process.env.REACT_APP_AUTH_BASE_URL;
   // State on change
@@ -18,7 +20,7 @@ const Login = (props) => {
   // HandleSubmit
   const handleSubmit = async (e) => {
     e.preventDefault();
-    props.setNavProgress(10);
+    // props.setNavProgress(10);
     // Fetch
     const response = await fetch(`${REACT_APP_AUTH_BASE_URL}/login`, {
       method: "POST",
@@ -27,18 +29,19 @@ const Login = (props) => {
       },
       body: JSON.stringify(credential),
     });
-    props.setNavProgress(70);
+    // props.setNavProgress(70);
     const resJSON = await response.json();
     console.log(resJSON);
 
     if (resJSON.success) {
       localStorage.setItem("token", resJSON.authToken);
       navigate("/profile");
-      props.showAlert("Logged in successfully", "success");
-      props.setNavProgress(100);
+      setAlert("Logged in successfully", "success");
+      // props.showAlert("Logged in successfully", "success");
+      // props.setNavProgress(100);
     } else {
-      props.showAlert(resJSON.error, "danger");
-      props.setNavProgress(100);
+      // props.showAlert(resJSON.error, "danger");
+      // props.setNavProgress(100);
     }
   };
 
@@ -95,4 +98,16 @@ const Login = (props) => {
   );
 };
 
-export default Login;
+const mapStateToProps = (state) => {
+  return {
+    alertState: state.alert,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    setAlert: (message, type) => dispatch(setAlert(message, type)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
