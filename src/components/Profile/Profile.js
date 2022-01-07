@@ -5,25 +5,28 @@ import { setNavProgress } from "../../redux";
 
 const Profile = ({ fetchUsers, userData, setNavProgress }) => {
   useEffect(() => {
-    setNavProgress(100);
+    // setNavProgress(100);
     fetchUsers();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  return userData.loading ? (
-    <h2>Loading</h2>
-  ) : userData.error ? (
-    <h2>{userData.error}</h2>
-  ) : (
-    <div>
-      <h2>Users List</h2>
-      {console.log(userData)}
-      <div>
-        {userData &&
-          userData.users &&
-          userData.users.map((user) => <p>{user.name}</p>)}
-      </div>
-    </div>
+  return (
+    <>
+      {userData.loadng ? (
+        <p>Loading...</p>
+      ) : userData.error ? (
+        <p>{userData.error}</p>
+      ) : (
+        <>
+          <h2>Profile Details:</h2>
+          <div>
+            <p>Name: {userData.users.name}</p>
+            <p>E-Mail: {userData.users.email}</p>
+            <p>Username: {userData.users.username}</p>
+          </div>
+        </>
+      )}
+    </>
   );
 };
 

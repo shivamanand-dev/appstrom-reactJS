@@ -4,8 +4,9 @@ import { Form, Button } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import { connect } from "react-redux";
 import { setAlert } from "../../redux";
+import { setNavProgress } from "../../redux";
 
-const Login = ({ setAlert }) => {
+const Login = ({ setAlert, setNavProgress }) => {
   document.title = "AppStrom - Sign In";
   const REACT_APP_AUTH_BASE_URL = process.env.REACT_APP_AUTH_BASE_URL;
   // State on change
@@ -21,6 +22,7 @@ const Login = ({ setAlert }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     // props.setNavProgress(10);
+    setNavProgress(10);
     // Fetch
     const response = await fetch(`${REACT_APP_AUTH_BASE_URL}/login`, {
       method: "POST",
@@ -30,14 +32,15 @@ const Login = ({ setAlert }) => {
       body: JSON.stringify(credential),
     });
     // props.setNavProgress(70);
+    setNavProgress(50);
     const resJSON = await response.json();
-    console.log(resJSON);
 
     if (resJSON.success) {
       localStorage.setItem("token", resJSON.authToken);
       navigate("/profile");
       setAlert("Logged in successfully", "success");
       // props.showAlert("Logged in successfully", "success");
+      setNavProgress(100);
       // props.setNavProgress(100);
     } else {
       // props.showAlert(resJSON.error, "danger");
@@ -101,12 +104,14 @@ const Login = ({ setAlert }) => {
 const mapStateToProps = (state) => {
   return {
     alertState: state.alert,
+    progress: state.progress.progress,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
     setAlert: (message, type) => dispatch(setAlert(message, type)),
+    setNavProgress: (progress) => dispatch(setNavProgress(progress)),
   };
 };
 
