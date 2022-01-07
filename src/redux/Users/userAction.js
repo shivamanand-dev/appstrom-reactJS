@@ -5,15 +5,20 @@ import {
   FETCH_USERS_FAILURE,
 } from "./userTypes";
 
+const REACT_APP_AUTH_BASE_URL = process.env.REACT_APP_AUTH_BASE_URL;
+
 // Redux-thunk async Function
 export const fetchUsers = () => {
   return (dispatch) => {
     // Set Loading true
     dispatch(fetchUsersRequest());
     axios
-      .get("https://jsonplaceholder.typicode.com/users")
+      .get(`${REACT_APP_AUTH_BASE_URL}/getuser`, {
+        headers: {
+          "auth-token": localStorage.getItem("token"),
+        },
+      })
       .then((response) => {
-        // response.data is the users
         const users = response.data;
         dispatch(fetchUsersSuccess(users));
       })
