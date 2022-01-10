@@ -5,8 +5,9 @@ import { setNavProgress } from "../../redux";
 
 const Profile = ({ fetchUsers, userData, setNavProgress }) => {
   useEffect(() => {
-    // setNavProgress(100);
+    setNavProgress(50);
     fetchUsers();
+    setNavProgress(100);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

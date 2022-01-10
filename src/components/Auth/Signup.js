@@ -2,6 +2,9 @@ import { React, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Form, Button } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
+import { connect } from "react-redux";
+import { setAlert } from "../../redux";
+import { setNavProgress } from "../../redux";
 
 const Signup = (props) => {
   const baseURL = process.env.REACT_APP_AUTH_BASE_URL;
@@ -40,12 +43,11 @@ const Signup = (props) => {
     if (resJSON.success) {
       localStorage.setItem("token", resJSON.authToken);
       navigate("/profile");
-      props.showAlert("Signed up successfully", "success");
-      props.showAlert("Logged in successfully", "success");
-      props.setNavProgress(100);
+      // props.setNavProgress(100);
+      setAlert("Logged in successfully", "success");
     } else {
-      props.showAlert(resJSON.error, "danger");
-      props.setNavProgress(100);
+      // props.showAlert(resJSON.error, "danger");
+      // props.setNavProgress(100);
     }
     console.log(credential, baseURL);
   };
@@ -154,4 +156,18 @@ const Signup = (props) => {
   );
 };
 
-export default Signup;
+const mapStateToProps = (state) => {
+  return {
+    alertState: state.alert,
+    progress: state.progress.progress,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    setAlert: (message, type) => dispatch(setAlert(message, type)),
+    setNavProgress: (progress) => dispatch(setNavProgress(progress)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Signup);

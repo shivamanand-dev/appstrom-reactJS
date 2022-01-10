@@ -28,22 +28,45 @@ const MainNavbar = () => {
               style={{ maxHeight: "100px" }}
               navbarScroll
             >
-              <Link
-                to="/"
-                className={`nav-link mx-1 ${
-                  location.pathname === "/" ? "active" : ""
-                }`}
-              >
-                Home
-              </Link>
-              <Link
-                to="/about"
-                className={`nav-link mx-1 ${
-                  location.pathname === "/about" ? "active" : ""
-                }`}
-              >
-                About
-              </Link>
+              {!localStorage.getItem("token") ? (
+                <>
+                  <Link
+                    to="/"
+                    className={`nav-link mx-1 ${
+                      location.pathname === "/" ? "active" : ""
+                    }`}
+                  >
+                    Home
+                  </Link>
+                  <Link
+                    to="/about"
+                    className={`nav-link mx-1 ${
+                      location.pathname === "/about" ? "active" : ""
+                    }`}
+                  >
+                    About
+                  </Link>
+                </>
+              ) : (
+                <>
+                  <Link
+                    to="/profile"
+                    className={`nav-link mx-1 ${
+                      location.pathname === "/profile" ? "active" : ""
+                    }`}
+                  >
+                    Profile
+                  </Link>
+                  <Link
+                    to="/about"
+                    className={`nav-link mx-1 ${
+                      location.pathname === "/about" ? "active" : ""
+                    }`}
+                  >
+                    About
+                  </Link>
+                </>
+              )}
             </Nav>
             {!localStorage.getItem("token") ? (
               <>

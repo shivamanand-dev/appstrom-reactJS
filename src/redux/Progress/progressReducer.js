@@ -2,7 +2,6 @@ import { SET_NAV_PROGRESS } from "./progressTypes";
 
 const initialState = {
   progress: 0,
-  lol: 9,
 };
 
 const reducer = (state = initialState, action) => {
