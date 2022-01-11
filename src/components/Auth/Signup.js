@@ -49,7 +49,6 @@ const Signup = (props) => {
       // props.showAlert(resJSON.error, "danger");
       // props.setNavProgress(100);
     }
-    console.log(credential, baseURL);
   };
 
   //   Handle OnChange

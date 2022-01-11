@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { fetchUsers } from "../../redux";
 import { setNavProgress } from "../../redux";
+import { Link } from "react-router-dom";
 
 const Profile = ({ fetchUsers, userData, setNavProgress }) => {
   useEffect(() => {
@@ -13,18 +14,31 @@ const Profile = ({ fetchUsers, userData, setNavProgress }) => {
 
   return (
     <>
-      {userData.loadng ? (
-        <p>Loading...</p>
-      ) : userData.error ? (
-        <p>{userData.error}</p>
+      {!localStorage.getItem("token") ? (
+        <div>
+          <p>Log in First</p>
+        </div>
       ) : (
         <>
-          <h2>Profile Details:</h2>
-          <div>
-            <p>Name: {userData.users.name}</p>
-            <p>E-Mail: {userData.users.email}</p>
-            <p>Username: {userData.users.username}</p>
-          </div>
+          {userData.loadng ? (
+            <p>Loading...</p>
+          ) : userData.error ? (
+            <p>{userData.error}</p>
+          ) : (
+            <>
+              <h2>Profile Details:</h2>
+              <div>
+                <p>Name: {userData.users.name}</p>
+                <p>E-Mail: {userData.users.email}</p>
+                <p>Username: {userData.users.username}</p>
+                <p>Balance: {userData.users.openningBalance}</p>
+
+                <Link to="/activity" className="btn btn-secondary">
+                  Activity Tracker
+                </Link>
+              </div>
+            </>
+          )}
         </>
       )}
     </>

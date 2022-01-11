@@ -1,7 +1,6 @@
 import { React, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "../App.css";
 import { Navbar, Container, Nav, Button } from "react-bootstrap";
 
 const MainNavbar = () => {

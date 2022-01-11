@@ -10,6 +10,7 @@ import Signup from "./components/Auth/Signup";
 import LoadingBar from "react-top-loading-bar";
 import Profile from "./components/Profile/Profile";
 import { useSelector } from "react-redux";
+import Activity from "./components/ActivityTracker/Activity";
 
 function App() {
   // const [progress, setProgress] = useState(0);
@@ -33,7 +34,10 @@ function App() {
             <Route exact path="/login" element={<Login />}></Route>
             {/* Sign up */}
             <Route exact path="/signup" element={<Signup />}></Route>
+            {/* PROFILE */}
             <Route exact path="/profile" element={<Profile />}></Route>
+            {/* ACTIVITY */}
+            <Route exact path="/activity" element={<Activity />}></Route>
           </Routes>
         </div>
       </Router>
