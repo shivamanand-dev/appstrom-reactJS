@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { fetchUsers } from "../../redux";
 import { setNavProgress } from "../../redux";
+import ImageRender from "../GlobalUi/showImage/ImageRender";
 
 const Profile = ({ fetchUsers, userData, setNavProgress }) => {
   useEffect(() => {
@@ -19,11 +20,16 @@ const Profile = ({ fetchUsers, userData, setNavProgress }) => {
         <p>{userData.error}</p>
       ) : (
         <>
+          {/* {console.log(
+            new Buffer.from(userData.users.avatar.data[0]).toString("ascii")
+          )} */}
+          {console.log(userData)}
           <h2>Profile Details:</h2>
           <div>
             <p>Name: {userData.users.name}</p>
             <p>E-Mail: {userData.users.email}</p>
             <p>Username: {userData.users.username}</p>
+            <ImageRender avatar={userData.users.avatar} />
           </div>
         </>
       )}
