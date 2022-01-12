@@ -56,47 +56,69 @@ const Login = ({ setAlert, setNavProgress }) => {
     });
   };
   return (
-    <div className="gradientBackground">
-      <Form
-        style={{ maxWidth: "300px", margin: "0 auto" }}
-        onSubmit={handleSubmit}
-      >
-        <Form.Group className="mb-3">
-          <Form.Label htmlFor="username">Username</Form.Label>
-          <Form.Control
-            type="text"
-            minLength={5}
-            placeholder="Enter Username"
-            required
-            onChange={handleOnchange}
-            name="username"
-            value={credential.username}
-          />
-          <Form.Text className="text-muted">
-            We'll never share your email with anyone else.
-          </Form.Text>
-        </Form.Group>
-        <Form.Group className="mb-3">
-          <Form.Label htmlFor="password">Password</Form.Label>
-          <Form.Control
-            type="password"
-            minLength={7}
-            placeholder="Password"
-            required
-            onChange={handleOnchange}
-            name="password"
-            value={credential.password}
-          />
-        </Form.Group>
-        <Form.Group className="mb-3">
-          <Link to="/signup" style={{ boxShadow: "none" }}>
-            Not yet Registered? SignUp
-          </Link>
-        </Form.Group>
-        <Button variant="primary" style={{ boxShadow: "none" }} type="submit">
-          Log In
-        </Button>
-      </Form>
+    <div
+      className="gradientBackground"
+      style={{ display: "flex", justifyContent: "center" }}
+    >
+      <div className="d-flex justify-content-between" style={{ width: "70%" }}>
+        <div className="text-center" style={{width: "50%"}}>
+          <i class="bi bi-person-circle" style={{ fontSize: "200px" }}></i>
+        </div>
+        <div style={{width: "50%"}}>
+        <Form style={{ maxWidth: "300px" }} onSubmit={handleSubmit}>
+          <Form.Group className="mb-3">
+            <Form.Label style={{ fontWeight: "500" }} htmlFor="username">
+              Email or Username
+            </Form.Label>
+            <Form.Control
+              type="text"
+              minLength={5}
+              // placeholder="Enter Username or Email"
+              required
+              onChange={handleOnchange}
+              name="username"
+              value={credential.username}
+            />
+            <Form.Text className="text-muted">
+              We'll never share your email with anyone else.
+            </Form.Text>
+          </Form.Group>
+          <Form.Group className="mb-3">
+            <Form.Label style={{ fontWeight: "500" }} htmlFor="password">
+              Password
+            </Form.Label>
+            <Form.Control
+              type="password"
+              minLength={7}
+              // placeholder="Enter Password"
+              required
+              onChange={handleOnchange}
+              name="password"
+              value={credential.password}
+            />
+          </Form.Group>
+
+          <Button
+            className="authFormBtnTrans"
+            variant="primary"
+            style={{ boxShadow: "none", width: "100%" }}
+            type="submit"
+          >
+            <span>LOG IN</span>
+          </Button>
+
+          <Form.Group style={{ margin: "20px 40px" }} className="mb-3">
+            Not yet Registered? <span> </span>
+            <Link
+              to="/signup"
+              style={{ boxShadow: "none", textDecoration: "none" }}
+            >
+              Sign up
+            </Link>
+          </Form.Group>
+        </Form>
+        </div>
+      </div>
     </div>
   );
 };
