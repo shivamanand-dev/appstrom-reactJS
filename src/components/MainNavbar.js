@@ -18,13 +18,20 @@ const MainNavbar = () => {
     <div>
       <Navbar expand="lg">
         <Container fluid className="container">
-          <Navbar.Brand style = {{fontSize: "25px",fontWeight: "500"}}>AppStrom</Navbar.Brand>
+          <Navbar.Brand style={{ fontSize: "25px", fontWeight: "500" }}>
+            AppStrom
+          </Navbar.Brand>
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">
             {/* Nav Links */}
             <Nav
               className="me-auto my-2 my-lg-0"
-              style={{ maxHeight: "100px", margin: "0 auto", fontWeight: "400", fontSize: "18px"}}
+              style={{
+                maxHeight: "100px",
+                margin: "0 auto",
+                fontWeight: "400",
+                fontSize: "18px",
+              }}
               navbarScroll
             >
               {!localStorage.getItem("token") ? (
@@ -76,14 +83,7 @@ const MainNavbar = () => {
               )}
             </Nav>
             {!localStorage.getItem("token") ? (
-              <>
-                <Link
-                  to="/login"
-                  className="btn btn-outline-primary mx-1"
-                  style={{ boxShadow: "none" }}
-                >
-                  Log in
-                </Link>
+              location.pathname === "/login" ? (
                 <Link
                   to="/signup"
                   className="btn btn-outline-primary mx-1"
@@ -91,7 +91,15 @@ const MainNavbar = () => {
                 >
                   Sign up
                 </Link>
-              </>
+              ) : (
+                <Link
+                  to="/login"
+                  className="btn btn-outline-primary mx-1"
+                  style={{ boxShadow: "none" }}
+                >
+                  Log in
+                </Link>
+              )
             ) : (
               <Button
                 variant="outline-danger"
