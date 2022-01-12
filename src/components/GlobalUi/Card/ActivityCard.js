@@ -1,42 +1,33 @@
 import React from "react";
-import { connect } from "react-redux";
-import { getAllActivity } from "../../../redux";
-import { setNavProgress } from "../../../redux";
-import { setAlert } from "../../../redux";
+import axios from "axios";
 import DaysButton from "../../ActivityTracker/DaysButton";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Card } from "react-bootstrap";
-import "bootstrap-icons/font/bootstrap-icons.css";
-import axios from "axios";
 
-const ActivityCard = (props, { getAllActivity, setNavProgress, setAlert }) => {
+const ActivityCard = (props) => {
   const REACT_APP_ACTIVITY_BASE_URL = process.env.REACT_APP_ACTIVITY_BASE_URL;
   //   console.log(props.activity.days);
-  console.log(getAllActivity);
+  //   console.log(getAllActivity);
   const handleDelete = async (e) => {
     e.preventDefault();
 
     const id = props.id;
     console.log(id);
 
-    // setNavProgress(30);
+    // console.log();
 
-    await axios
-      .delete(`${REACT_APP_ACTIVITY_BASE_URL}/deleteActivity/${id}`, {
-        headers: {
-          "auth-token": localStorage.getItem("token"),
-        },
-      })
-      .then((res) => {
-        const resJson = res.data;
-        console.log(resJson);
-        setAlert(resJson.Success, "success");
-        // getAllActivity();
-      });
+    props.setNavProgress(30);
 
-    // setNavProgress(50);
+    await axios.delete(`${REACT_APP_ACTIVITY_BASE_URL}/deleteActivity/${id}`, {
+      headers: {
+        "auth-token": localStorage.getItem("token"),
+      },
+    });
 
-    // setNavProgress(70);
+    props.setNavProgress(50);
+    props.getAllActivity();
+    props.setAlert("Activity Deleted", "success");
+    props.setNavProgress(100);
   };
   return (
     <div className="my-3">
@@ -77,20 +68,4 @@ const ActivityCard = (props, { getAllActivity, setNavProgress, setAlert }) => {
   );
 };
 
-const mapStateToProps = (state) => {
-  return {
-    alertState: state.alert,
-    getActivity: state.activity,
-    progress: state.progress.progress,
-  };
-};
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    getAllActivity: () => dispatch(getAllActivity()),
-    setAlert: (message, type) => dispatch(setAlert(message, type)),
-    setNavProgress: (progress) => dispatch(setNavProgress(progress)),
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(ActivityCard);
+export default ActivityCard;
