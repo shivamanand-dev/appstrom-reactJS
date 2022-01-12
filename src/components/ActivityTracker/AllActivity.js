@@ -18,11 +18,9 @@ const AllActivity = ({ getAllActivity, getActivity, setNavProgress }) => {
         <p>{getActivity.error}</p>
       ) : (
         <div>
-          <p>AllActivity</p>
-
-          {/* CARD */}
+          {/* CARD - Render All Activity*/}
           {getActivity.activity.map((e) => {
-            return <ActivityCard key={e._id} activity={e} />;
+            return <ActivityCard key={e._id} activity={e} id={e._id} />;
           })}
         </div>
       )}

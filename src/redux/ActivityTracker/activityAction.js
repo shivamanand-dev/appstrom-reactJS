@@ -3,7 +3,9 @@ import {
   FETCH_ACTIVITY_SUCCESS,
   FETCH_ACTIVITY_FAILURE,
 } from "./activityTypes";
+
 import axios from "axios";
+
 const REACT_APP_ACTIVITY_BASE_URL = process.env.REACT_APP_ACTIVITY_BASE_URL;
 
 export const getAllActivity = () => {

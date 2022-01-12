@@ -1,16 +1,24 @@
 import React, { useState } from "react";
+import { getAllActivity, setNavProgress } from "../../redux";
+import { connect } from "react-redux";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Form, Row, Col, Button } from "react-bootstrap";
+import axios from "axios";
 
-const AddActivity = () => {
+const AddActivity = ({ getAllActivity, setNavProgress }) => {
+  const REACT_APP_ACTIVITY_BASE_URL = process.env.REACT_APP_ACTIVITY_BASE_URL;
+  // Null Activity for empty text box
   const nullActivity = {
     name: "",
     description: "",
     forDays: "",
     days: [],
   };
+
+  //   State for input
   const [newActivity, setNewActivity] = useState(nullActivity);
 
+  //   On Change handle
   const onchangeHandleInput = (e) => {
     setNewActivity({
       ...newActivity,
@@ -35,9 +43,27 @@ const AddActivity = () => {
   };
 
   //   handleSubmitActivity
-  const handleSubmitActivity = (e) => {
+  const handleSubmitActivity = async (e) => {
     e.preventDefault();
-    console.log(newActivity);
+    // console.log(newActivity);
+
+    setNavProgress(50);
+    // axios post request for new activity
+    await axios.post(
+      `${REACT_APP_ACTIVITY_BASE_URL}/addActivity`,
+      newActivity,
+      {
+        headers: {
+          "auth-token": localStorage.getItem("token"),
+        },
+      }
+    );
+
+    setNavProgress(70);
+    getAllActivity();
+    setNavProgress(100);
+
+    // Setting text feild empty
     setNewActivity({
       name: "",
       description: "",
@@ -70,7 +96,7 @@ const AddActivity = () => {
               type="number"
               placeholder="12"
               name="forDays"
-              value={newActivity.forDays}
+              //   value={newActivity.forDays}
               onChange={handleCalculateDays}
               required
             />
@@ -101,4 +127,18 @@ const AddActivity = () => {
   );
 };
 
-export default AddActivity;
+const mapStateToProps = (state) => {
+  return {
+    getActivity: state.activity,
+    progress: state.progress.progress,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    getAllActivity: () => dispatch(getAllActivity()),
+    setNavProgress: (progress) => dispatch(setNavProgress(progress)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(AddActivity);
