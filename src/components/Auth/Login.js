@@ -56,7 +56,7 @@ const Login = ({ setAlert, setNavProgress }) => {
     });
   };
   return (
-    <div>
+    <div className="gradientBackground">
       <Form
         style={{ maxWidth: "300px", margin: "0 auto" }}
         onSubmit={handleSubmit}

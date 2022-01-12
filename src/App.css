@@ -1,3 +1,29 @@
 .navbar-toggler:focus {
   box-shadow: none !important;
 }
+
+/* -------------------------Custom CSS-------------------------- */
+
+/* GRADIENT BACKGROUND */
+
+.gradientBackground {
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    padding-top: 100px;
+    background-image: linear-gradient(
+  155deg,
+  hsl(212deg 62% 96%) 0%,
+  hsl(229deg 44% 90%) 14%,
+  hsl(262deg 32% 83%) 28%,
+  hsl(337deg 82% 86%) 42%,
+  hsl(26deg 100% 82%) 56%,
+  hsl(48deg 92% 78%) 70%,
+  hsl(49deg 88% 82%) 84%,
+  hsl(50deg 84% 85%) 100%
+);
+}
+
