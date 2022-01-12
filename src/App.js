@@ -11,6 +11,7 @@ import LoadingBar from "react-top-loading-bar";
 import Profile from "./components/Profile/Profile";
 import { useSelector } from "react-redux";
 import Activity from "./components/ActivityTracker/Activity";
+import ContactUs from "./components/ContactUs";
 
 function App() {
   // const [progress, setProgress] = useState(0);
@@ -29,6 +30,7 @@ function App() {
           <LoadingBar color="#f11946" height={2} progress={state.progress} />
           <Routes>
             <Route exact path="/" element={<Home />}></Route>
+            <Route exact path="/contactus" element={<ContactUs />}></Route>
             <Route exact path="/about" element={<About />}></Route>
             {/* Login */}
             <Route exact path="/login" element={<Login />}></Route>

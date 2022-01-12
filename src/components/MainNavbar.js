@@ -16,15 +16,15 @@ const MainNavbar = () => {
   };
   return (
     <div>
-      <Navbar bg="dark" variant="dark" expand="lg">
+      <Navbar expand="lg">
         <Container fluid className="container">
-          <Navbar.Brand>AppStrom</Navbar.Brand>
+          <Navbar.Brand style = {{fontSize: "25px",fontWeight: "500"}}>AppStrom</Navbar.Brand>
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">
             {/* Nav Links */}
             <Nav
               className="me-auto my-2 my-lg-0"
-              style={{ maxHeight: "100px" }}
+              style={{ maxHeight: "100px", margin: "0 auto", fontWeight: "400", fontSize: "18px"}}
               navbarScroll
             >
               {!localStorage.getItem("token") ? (
@@ -44,6 +44,14 @@ const MainNavbar = () => {
                     }`}
                   >
                     About
+                  </Link>
+                  <Link
+                    to="/contactus"
+                    className={`nav-link mx-1 ${
+                      location.pathname === "/contactus" ? "active" : ""
+                    }`}
+                  >
+                    Contact Us
                   </Link>
                 </>
               ) : (
@@ -74,14 +82,14 @@ const MainNavbar = () => {
                   className="btn btn-outline-primary mx-1"
                   style={{ boxShadow: "none" }}
                 >
-                  SignIn
+                  Log in
                 </Link>
                 <Link
                   to="/signup"
                   className="btn btn-outline-primary mx-1"
                   style={{ boxShadow: "none" }}
                 >
-                  SignUp
+                  Sign up
                 </Link>
               </>
             ) : (
