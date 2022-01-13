@@ -60,7 +60,10 @@ const ActivityCard = (props) => {
                   key={e.dayNo}
                   days={e}
                   id={props.activity._id}
+                  updateActivity={props.updateActivity}
                   getAllActivity={props.getAllActivity}
+                  setNavProgress={props.setNavProgress}
+                  setAlert={props.setAlert}
                 />
               );
             })}

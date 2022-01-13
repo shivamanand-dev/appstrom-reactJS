@@ -27,6 +27,27 @@ export const getAllActivity = () => {
   };
 };
 
+export const updateActivity = (id, days) => {
+  return async () => {
+    await axios.put(
+      `${REACT_APP_ACTIVITY_BASE_URL}/updateActivity/${id}`,
+      days,
+      {
+        headers: {
+          "auth-token": localStorage.getItem("token"),
+        },
+      }
+    );
+    // .then((res) => {
+    //   const activity = res.data;
+    //   dispatch(fetchActivitySuccess(activity));
+    // })
+    // .catch((error) => {
+    //   dispatch(fetchActivityFailure(error.message));
+    // });
+  };
+};
+
 export const fetchActivityRequest = () => {
   return {
     type: FETCH_ACTIVITY_REQUEST,

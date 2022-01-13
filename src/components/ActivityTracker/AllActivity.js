@@ -1,6 +1,11 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from "react";
-import { getAllActivity, setNavProgress, setAlert } from "../../redux";
+import {
+  getAllActivity,
+  updateActivity,
+  setNavProgress,
+  setAlert,
+} from "../../redux";
 import { connect } from "react-redux";
 import ActivityCard from "../GlobalUi/Card/ActivityCard";
 
@@ -9,6 +14,7 @@ const AllActivity = ({
   getActivity,
   setNavProgress,
   setAlert,
+  updateActivity,
 }) => {
   // Get Request from redux
   // console.log(getAllActivity);
@@ -34,6 +40,7 @@ const AllActivity = ({
                 getAllActivity={getAllActivity}
                 setNavProgress={setNavProgress}
                 setAlert={setAlert}
+                updateActivity={updateActivity}
               />
             );
           })}
@@ -54,6 +61,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     getAllActivity: () => dispatch(getAllActivity()),
+    updateActivity: (id, days) => dispatch(updateActivity(id, days)),
     setNavProgress: (progress) => dispatch(setNavProgress(progress)),
     setAlert: (message, type) => dispatch(setAlert(message, type)),
   };
