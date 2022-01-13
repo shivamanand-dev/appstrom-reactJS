@@ -6,8 +6,8 @@ import { Card } from "react-bootstrap";
 
 const ActivityCard = (props) => {
   const REACT_APP_ACTIVITY_BASE_URL = process.env.REACT_APP_ACTIVITY_BASE_URL;
-  //   console.log(props.activity.days);
-  //   console.log(getAllActivity);
+
+  // Handle Delete
   const handleDelete = async (e) => {
     e.preventDefault();
 
@@ -35,7 +35,6 @@ const ActivityCard = (props) => {
         <Card.Header className="d-flex justify-content-between">
           <p className="mb-0">{props.activity.description}</p>
           <div>
-            <i style={{ cursor: "pointer" }} className="bi bi-pen mx-3"></i>
             <i
               style={{ cursor: "pointer" }}
               className="bi bi-trash"
@@ -57,7 +56,12 @@ const ActivityCard = (props) => {
           >
             {props.activity.days.map((e) => {
               return (
-                <DaysButton key={e.dayNo} days={e} id={props.activity._id} />
+                <DaysButton
+                  key={e.dayNo}
+                  days={e}
+                  id={props.activity._id}
+                  getAllActivity={props.getAllActivity}
+                />
               );
             })}
           </div>

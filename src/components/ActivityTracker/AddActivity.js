@@ -96,7 +96,6 @@ const AddActivity = ({ getAllActivity, setNavProgress }) => {
               type="number"
               placeholder="12"
               name="forDays"
-              //   value={newActivity.forDays}
               onChange={handleCalculateDays}
               required
             />

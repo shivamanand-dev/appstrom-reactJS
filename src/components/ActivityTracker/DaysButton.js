@@ -3,8 +3,11 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Button } from "react-bootstrap";
 
 const DaysButton = (props) => {
-  const handleOnclick = () => {
-    console.log(props.id);
+  // Activity
+
+  const handleOnclick = async (e) => {
+    e.preventDefault();
+    console.log(props);
   };
   return (
     <div>
