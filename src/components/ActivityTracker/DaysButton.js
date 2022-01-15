@@ -64,6 +64,7 @@ const DaysButton = (props) => {
         style={{ width: "45px" }}
         variant={`${props.days.isDone ? "success" : "outline-warning"}`}
         onClick={handleOnclick}
+        disabled={props.disabled}
       >
         {props.days.dayNo}
       </Button>

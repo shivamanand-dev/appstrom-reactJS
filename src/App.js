@@ -25,8 +25,9 @@ function App() {
     <div>
       <Router>
         <MainNavbar />
-        <div style={{ height: "50px" }}></div>
+        <div style={{ height: "64px" }}></div>
         <Alert />
+        <div style={{ height: "50px" }}></div>
         <div className="container mt-3">
           <LoadingBar color="#f11946" height={2} progress={state.progress} />
           <Routes>
