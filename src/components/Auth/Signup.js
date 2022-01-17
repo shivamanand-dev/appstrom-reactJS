@@ -61,76 +61,96 @@ const Signup = (props) => {
     // console.log(credential, "cred");
     // console.log(e.target.name, ":", e.target.value);
   };
+
   return (
-    <div className="mt-3">
-      <Form
-        style={{ maxWidth: "300px", margin: "0 auto" }}
-        onSubmit={handleSubmit}
+    //          ------- MAIN GRADIENT BACKGROUND --------
+    <div
+      className="gradientBackground"
+      style={{ display: "flex", justifyContent: "center" }}
+    >
+      {/* ---- PERSON ICON AND SIGN UP FORM CONTAINER ----- */}
+
+      <div
+        className="d-block justify-content-between d-xs-block d-sm-block d-md-flex d-lg-flex d-xl-flex align-items-center authContainer"
+        style={{ width: "70%" }}
       >
-        <Form.Group className="mb-3">
-          <Form.Label htmlFor="name">Name</Form.Label>
-          <Form.Control
-            onChange={handleOnChange}
-            type="text"
-            placeholder="Name"
-            name="name"
-            value={credential.name}
-            required
-            minLength={3}
-          />
-        </Form.Group>
+        {/*  --- PERSON ICON ---  */}
 
-        <Form.Group className="mb-3">
-          <Form.Label htmlFor="email">Email address</Form.Label>
-          <Form.Control
-            onChange={handleOnChange}
-            type="email"
-            placeholder="Enter email"
-            name="email"
-            value={credential.email}
-            required
-          />
-        </Form.Group>
+        <div className="text-center displayNone" style={{ width: "100%" }}>
+          <i className="bi bi-person-circle" style={{ fontSize: "200px" }}></i>
+        </div>
 
-        <Form.Group className="mb-3">
-          <Form.Label htmlFor="username">Username</Form.Label>
-          <Form.Control
-            onChange={handleOnChange}
-            type="text"
-            placeholder="Username"
-            name="username"
-            value={credential.username}
-            required
-            minLength={3}
-          />
-        </Form.Group>
+        {/* ---- SIGN UP FORM ----   */}
 
-        <Form.Group className="mb-3">
-          <Form.Label htmlFor="password">Password</Form.Label>
-          <Form.Control
-            onChange={handleOnChange}
-            type="password"
-            placeholder="Password"
-            name="password"
-            value={credential.password}
-            required
-            minLength={7}
-          />
-        </Form.Group>
+        <div className="mt-3">
+          <Form
+            style={{ maxWidth: "300px", margin: "0 auto" }}
+            onSubmit={handleSubmit}
+          >
+            <Form.Group className="mb-3">
+              <Form.Label htmlFor="name">Name</Form.Label>
+              <Form.Control
+                onChange={handleOnChange}
+                type="text"
+                placeholder="Name"
+                name="name"
+                value={credential.name}
+                required
+                minLength={3}
+              />
+            </Form.Group>
 
-        <Form.Group className="mb-3">
-          <Form.Label htmlFor="appliedPromocode">PromoCode</Form.Label>
-          <Form.Control
-            onChange={handleOnChange}
-            type="text"
-            placeholder="PromoCode"
-            name="appliedPromocode"
-            value={credential.appliedPromocode}
-            minLength={3}
-          />
-        </Form.Group>
+            <Form.Group className="mb-3">
+              <Form.Label htmlFor="email">Email address</Form.Label>
+              <Form.Control
+                onChange={handleOnChange}
+                type="email"
+                placeholder="Enter email"
+                name="email"
+                value={credential.email}
+                required
+              />
+            </Form.Group>
 
-        {/* <Form.Group className="mb-3">
+            <Form.Group className="mb-3">
+              <Form.Label htmlFor="username">Username</Form.Label>
+              <Form.Control
+                onChange={handleOnChange}
+                type="text"
+                placeholder="Username"
+                name="username"
+                value={credential.username}
+                required
+                minLength={3}
+              />
+            </Form.Group>
+
+            <Form.Group className="mb-3">
+              <Form.Label htmlFor="password">Password</Form.Label>
+              <Form.Control
+                onChange={handleOnChange}
+                type="password"
+                placeholder="Password"
+                name="password"
+                value={credential.password}
+                required
+                minLength={7}
+              />
+            </Form.Group>
+
+            <Form.Group className="mb-3">
+              <Form.Label htmlFor="appliedPromocode">PromoCode</Form.Label>
+              <Form.Control
+                onChange={handleOnChange}
+                type="text"
+                placeholder="PromoCode"
+                name="appliedPromocode"
+                value={credential.appliedPromocode}
+                minLength={3}
+              />
+            </Form.Group>
+
+            {/* <Form.Group className="mb-3">
           <Form.Label htmlFor="promocode">Your PromoCode</Form.Label>
           <Form.Control
             type="text"
@@ -141,16 +161,22 @@ const Signup = (props) => {
           />
         </Form.Group> */}
 
-        <Form.Group className="mb-3">
-          <Link to="/login" style={{ boxShadow: "none" }}>
-            Allready Registered? Log In
-          </Link>
-        </Form.Group>
+            <Form.Group className="mb-3">
+              <Link to="/login" style={{ boxShadow: "none" }}>
+                Allready Registered? Log In
+              </Link>
+            </Form.Group>
 
-        <Button variant="primary" style={{ boxShadow: "none" }} type="submit">
-          Sign Up
-        </Button>
-      </Form>
+            <Button
+              variant="primary"
+              style={{ boxShadow: "none" }}
+              type="submit"
+            >
+              Sign Up
+            </Button>
+          </Form>
+        </div>
+      </div>
     </div>
   );
 };
