@@ -55,19 +55,27 @@ const Login = ({ setAlert, setNavProgress }) => {
       [e.target.name]: e.target.value,
     });
   };
+
   return (
+    //          ------- MAIN GRADIENT BACKGROUND --------
     <div
       className="gradientBackground"
       style={{ display: "flex", justifyContent: "center" }}
     >
+      {/* ---- PERSON ICON AND LOGIN FORM CONTAINER ----- */}
       <div
-        className="d-block justify-content-between d-xs-block d-sm-block d-md-flex d-lg-flex d-xl-flex"
+        className="d-block justify-content-between d-xs-block d-sm-block d-md-flex d-lg-flex d-xl-flex authContainer"
         style={{ width: "70%" }}
       >
+        {/*  --- PERSON ICON ---  */}
+
         <div className="text-center" style={{ width: "100%" }}>
           <i className="bi bi-person-circle" style={{ fontSize: "200px" }}></i>
         </div>
-        <div style={{ width: "100%", margin: "0 auto" }}>
+
+        {/* --- LOGIN FORM --- */}
+
+        <div style={{ width: "100%", margin: "0 auto", marginRight: "50px" }}>
           <Form
             style={{ maxWidth: "300px", margin: "0 auto" }}
             onSubmit={handleSubmit}
@@ -103,7 +111,7 @@ const Login = ({ setAlert, setNavProgress }) => {
                 value={credential.password}
               />
             </Form.Group>
-
+            {/* --- LOGIN BUTTON --- */}
             <Button
               className="authFormBtnTrans"
               variant="primary"

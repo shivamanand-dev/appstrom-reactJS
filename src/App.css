@@ -25,12 +25,20 @@
   );
 }
 
+footer{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
 /* AUTH CONTAINER */
 
-/* .authContainer {
-  height: 50vh;
-  width: 50vw;
-} */
+.authContainer {
+  background-color: #F0F2F3ab;
+  border-radius: 10px;
+  padding-top: 100px;
+  margin-bottom: 50px;
+}
 
 /* AUTH FORM BUTTON TRANSITION */
 

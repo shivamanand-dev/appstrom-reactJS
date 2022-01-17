@@ -12,6 +12,7 @@ import Profile from "./components/Profile/Profile";
 import { useSelector } from "react-redux";
 import Activity from "./components/ActivityTracker/Activity";
 import ContactUs from "./components/ContactUs";
+import Footer from "./components/Footer";
 
 function App() {
   // const [progress, setProgress] = useState(0);
@@ -44,6 +45,7 @@ function App() {
             <Route exact path="/activity" element={<Activity />}></Route>
           </Routes>
         </div>
+        <Footer />
       </Router>
     </div>
   );
