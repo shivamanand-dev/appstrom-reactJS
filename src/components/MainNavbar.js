@@ -96,7 +96,24 @@ const MainNavbar = () => {
               )}
             </Nav>
             {!localStorage.getItem("token") ? (
-              location.pathname === "/login" ? (
+              location.pathname === "/" ? (
+                <>
+                  <Link
+                    to="/login"
+                    className="btn btn-outline-primary mx-1"
+                    style={{ boxShadow: "none" }}
+                  >
+                    Log in
+                  </Link>
+                  <Link
+                    to="/signup"
+                    className="btn btn-outline-primary mx-1"
+                    style={{ boxShadow: "none" }}
+                  >
+                    Sign up
+                  </Link>
+                </>
+              ) : location.pathname === "/login" ? (
                 <Link
                   to="/signup"
                   className="btn btn-outline-primary mx-1"
