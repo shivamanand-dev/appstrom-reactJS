@@ -65,7 +65,7 @@ const Login = ({ setAlert, setNavProgress }) => {
         style={{ width: "70%" }}
       >
         <div className="text-center" style={{ width: "100%" }}>
-          <i class="bi bi-person-circle" style={{ fontSize: "200px" }}></i>
+          <i className="bi bi-person-circle" style={{ fontSize: "200px" }}></i>
         </div>
         <div style={{ width: "100%", margin: "0 auto" }}>
           <Form
