@@ -25,16 +25,10 @@
   );
 }
 
-footer{
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-}
-
 /* AUTH CONTAINER */
 
 .authContainer {
-  background-color: #F0F2F3ab;
+  background-color: #f0f2f3ab;
   border-radius: 10px;
   padding-top: 100px;
   margin-bottom: 50px;
