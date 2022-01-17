@@ -6,14 +6,17 @@ import { Card } from "react-bootstrap";
 
 const ActivityCard = (props) => {
   const REACT_APP_ACTIVITY_BASE_URL = process.env.REACT_APP_ACTIVITY_BASE_URL;
-  //   console.log(props.activity.days);
-  //   console.log(getAllActivity);
-  const handleDelete = async (e) => {
-    e.preventDefault();
 
+  let completed = props.activity.isActivityCompeted;
+
+  const date = new Date(props.activity.date);
+
+  let dateParsed = `${date.getDate()}/${
+    date.getMonth() + 1
+  }/${date.getFullYear()}`;
+  // Handle Delete
+  const handleDelete = async () => {
     const id = props.id;
-    console.log(id);
-
     // console.log();
 
     props.setNavProgress(30);
@@ -29,22 +32,78 @@ const ActivityCard = (props) => {
     props.setAlert("Activity Deleted", "success");
     props.setNavProgress(100);
   };
+
+  // Handle Complete
+  const handleComplete = () => {
+    const id = props.id;
+    let activityDays = props.activity.days;
+
+    activityDays.forEach((e) => {
+      return (e.isDone = true);
+    });
+
+    const completed = true;
+
+    updateDaysHandle(id, activityDays, completed);
+  };
+
+  const updateDaysHandle = async (id, currentActivityDays, completed) => {
+    // Storing array in object
+    let updatedDays = {
+      days: currentActivityDays,
+      isActivityCompeted: completed,
+    };
+
+    props.setNavProgress(50);
+    // Sending Request
+    await props.updateActivity(id, updatedDays);
+    // Getting Activity
+    //
+    props.setNavProgress(70);
+    props.getAllActivity();
+    props.setAlert("Congrats!! Activity Completed", "success");
+    props.setNavProgress(100);
+  };
+
+  // UI
   return (
     <div className="my-3">
       <Card>
         <Card.Header className="d-flex justify-content-between">
-          <p className="mb-0">{props.activity.description}</p>
+          <p className="mb-0">
+            <span style={{ fontSize: "24px", textTransform: "capitalize" }}>
+              {props.activity.name}
+            </span>
+            <span className="mx-3" style={{ fontSize: "14px", margin: "0" }}>
+              {dateParsed}
+            </span>
+          </p>
+
           <div>
-            <i style={{ cursor: "pointer" }} className="bi bi-pen mx-3"></i>
+            {/* Complete */}
             <i
-              style={{ cursor: "pointer" }}
+              style={{ cursor: "pointer", fontSize: "22px" }}
+              className={`bi bi-check2-all mx-2 ${
+                completed ? "text-primary" : " "
+              }`}
+              data-bs-toggle="tooltip"
+              data-bs-html="true"
+              title="Mark as Complete"
+              onClick={handleComplete}
+            ></i>
+
+            {/* Delete */}
+            <i
+              style={{ cursor: "pointer", color: "red", fontSize: "22px" }}
               className="bi bi-trash"
               onClick={handleDelete}
             ></i>
           </div>
         </Card.Header>
         <Card.Body>
-          <Card.Title>{props.activity.name}</Card.Title>
+          <div>
+            <p>{props.activity.description}</p>
+          </div>
 
           {/* Render Days */}
           <div
@@ -57,7 +116,16 @@ const ActivityCard = (props) => {
           >
             {props.activity.days.map((e) => {
               return (
-                <DaysButton key={e.dayNo} days={e} id={props.activity._id} />
+                <DaysButton
+                  key={e.dayNo}
+                  days={e}
+                  id={props.activity._id}
+                  updateActivity={props.updateActivity}
+                  getAllActivity={props.getAllActivity}
+                  setNavProgress={props.setNavProgress}
+                  setAlert={props.setAlert}
+                  disabled={completed}
+                />
               );
             })}
           </div>

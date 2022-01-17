@@ -16,7 +16,20 @@ const MainNavbar = () => {
   };
   return (
     <div>
-      <Navbar expand="lg">
+      <Navbar
+        expand="lg"
+        bg={`${
+          location.pathname === "/login" || location.pathname === "/signup"
+            ? " "
+            : "dark"
+        }`}
+        variant={`${
+          location.pathname === "/login" || location.pathname === "/signup"
+            ? "light"
+            : "dark"
+        }`}
+        className="fixed-top"
+      >
         <Container fluid className="container">
           <Navbar.Brand style={{ fontSize: "25px", fontWeight: "500" }}>
             AppStrom

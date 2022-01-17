@@ -60,12 +60,18 @@ const Login = ({ setAlert, setNavProgress }) => {
       className="gradientBackground"
       style={{ display: "flex", justifyContent: "center" }}
     >
-      <div className="d-flex justify-content-between" style={{ width: "70%" }}>
-        <div className="text-center" style={{ width: "50%" }}>
+      <div
+        className="d-block justify-content-between d-xs-block d-sm-block d-md-flex d-lg-flex d-xl-flex"
+        style={{ width: "70%" }}
+      >
+        <div className="text-center" style={{ width: "100%" }}>
           <i class="bi bi-person-circle" style={{ fontSize: "200px" }}></i>
         </div>
-        <div style={{ width: "50%" }}>
-          <Form style={{ maxWidth: "300px" }} onSubmit={handleSubmit}>
+        <div style={{ width: "100%", margin: "0 auto" }}>
+          <Form
+            style={{ maxWidth: "300px", margin: "0 auto" }}
+            onSubmit={handleSubmit}
+          >
             <Form.Group className="mb-3">
               <Form.Label style={{ fontWeight: "500" }} htmlFor="username">
                 Email or Username

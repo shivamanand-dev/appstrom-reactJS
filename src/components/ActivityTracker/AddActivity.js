@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import { getAllActivity, setNavProgress } from "../../redux";
+import { getAllActivity, setNavProgress, setAlert } from "../../redux";
 import { connect } from "react-redux";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Form, Row, Col, Button } from "react-bootstrap";
 import axios from "axios";
 
-const AddActivity = ({ getAllActivity, setNavProgress }) => {
+const AddActivity = ({ getAllActivity, setNavProgress, setAlert }) => {
   const REACT_APP_ACTIVITY_BASE_URL = process.env.REACT_APP_ACTIVITY_BASE_URL;
   // Null Activity for empty text box
   const nullActivity = {
@@ -61,6 +61,7 @@ const AddActivity = ({ getAllActivity, setNavProgress }) => {
 
     setNavProgress(70);
     getAllActivity();
+    setAlert("Activity Added", "success");
     setNavProgress(100);
 
     // Setting text feild empty
@@ -96,7 +97,6 @@ const AddActivity = ({ getAllActivity, setNavProgress }) => {
               type="number"
               placeholder="12"
               name="forDays"
-              //   value={newActivity.forDays}
               onChange={handleCalculateDays}
               required
             />
@@ -131,6 +131,7 @@ const mapStateToProps = (state) => {
   return {
     getActivity: state.activity,
     progress: state.progress.progress,
+    alertState: state.alert,
   };
 };
 
@@ -138,6 +139,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     getAllActivity: () => dispatch(getAllActivity()),
     setNavProgress: (progress) => dispatch(setNavProgress(progress)),
+    setAlert: (message, type) => dispatch(setAlert(message, type)),
   };
 };
 

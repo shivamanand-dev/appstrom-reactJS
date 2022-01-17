@@ -9,8 +9,9 @@ const REACT_APP_AUTH_BASE_URL = process.env.REACT_APP_AUTH_BASE_URL;
 
 // Redux-thunk async Function
 export const fetchUsers = () => {
-  return (dispatch, getState) => {
-    console.log(getState());
+  return (dispatch) => {
+    // take getState as argument for all states here
+    // console.log(getState());
     // Set Loading true
     dispatch(fetchUsersRequest());
     axios
