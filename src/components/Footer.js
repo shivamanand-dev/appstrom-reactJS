@@ -21,7 +21,10 @@ const Footer = () => {
               <span>© 2021 AppStrom</span>
             </div>
 
-            <ul className="nav col-md-4 justify-content-end list-unstyled d-flex">
+            <ul
+              style={{ fontSize: "22px" }}
+              className="nav col-md-4 justify-content-end list-unstyled d-flex"
+            >
               <li className="ms-3 mx-3">
                 <Link className="text-muted" to="#">
                   <i style={{ color: "#1DA1F2" }} className="bi bi-twitter"></i>
