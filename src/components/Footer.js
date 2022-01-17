@@ -16,13 +16,19 @@ const Footer = () => {
 
         <ul className="nav col-md-4 justify-content-end list-unstyled d-flex">
           <li className="ms-3">
-            <Link className="text-muted" to="/"></Link>
+            <Link className="text-muted" to="/">
+              <i class="bi bi-twitter"></i>
+            </Link>
           </li>
           <li className="ms-3">
-            <Link className="text-muted" to="/"></Link>
+            <Link className="text-muted" to="/">
+              <i class="bi bi-meta"></i>
+            </Link>
           </li>
           <li className="ms-3">
-            <Link className="text-muted" to="/"></Link>
+            <Link className="text-muted" to="/">
+              <i class="bi bi-instagram"></i>
+            </Link>
           </li>
         </ul>
       </footer>
