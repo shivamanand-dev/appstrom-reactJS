@@ -64,12 +64,12 @@ const Login = ({ setAlert, setNavProgress }) => {
     >
       {/* ---- PERSON ICON AND LOGIN FORM CONTAINER ----- */}
       <div
-        className="d-block justify-content-between d-xs-block d-sm-block d-md-flex d-lg-flex d-xl-flex authContainer"
+        className="d-block justify-content-between d-xs-block d-sm-block d-md-flex d-lg-flex d-xl-flex align-items-center authContainer"
         style={{ width: "70%" }}
       >
         {/*  --- PERSON ICON ---  */}
 
-        <div className="text-center" style={{ width: "100%" }}>
+        <div className="text-center displayNone" style={{ width: "100%" }}>
           <i className="bi bi-person-circle" style={{ fontSize: "200px" }}></i>
         </div>
 
