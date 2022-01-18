@@ -26,19 +26,28 @@ const Footer = () => {
               className="nav col-md-4 justify-content-end list-unstyled d-flex"
             >
               <li className="ms-3 mx-3">
-                <Link className="text-muted" to="#">
+                <a
+                  className="text-muted"
+                  href="https://twitter.com/shivamanand_dev"
+                >
                   <i style={{ color: "#1DA1F2" }} className="bi bi-twitter"></i>
-                </Link>
+                </a>
               </li>
               <li className="ms-3 mx-3">
-                <Link className="text-muted" to="#">
+                <a
+                  className="text-muted"
+                  href="https://www.instagram.com/shivamanand.dev/"
+                >
                   <i style={instaGradient} className="bi bi-instagram"></i>
-                </Link>
+                </a>
               </li>
               <li className="ms-3">
-                <Link className="text-muted" to="#">
+                <a
+                  className="text-muted"
+                  href="https://www.facebook.com/shivam.jackson252/"
+                >
                   <i style={{ color: "#006de9" }} className="bi bi-meta"></i>
-                </Link>
+                </a>
               </li>
             </ul>
           </div>
@@ -54,7 +63,7 @@ const instaGradient = {
     "radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%)",
   WebkitBackgroundClip: "text",
   backgroundClip: "text",
-  webkitTextFillColor: "transparent",
+  WebkitTextFillColor: "transparent",
 };
 
 export default Footer;

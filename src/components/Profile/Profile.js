@@ -32,6 +32,8 @@ const Profile = ({ fetchUsers, userData, setNavProgress }) => {
                 <p>E-Mail: {userData.users.email}</p>
                 <p>Username: {userData.users.username}</p>
                 <p>Balance: {userData.users.openningBalance}</p>
+                <p>Followers: {userData.users.followers}</p>
+                <p>Following: {userData.users.following}</p>
 
                 <Link to="/activity" className="btn btn-secondary">
                   Activity Tracker

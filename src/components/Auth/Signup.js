@@ -71,7 +71,7 @@ const Signup = (props) => {
       {/* ---- PERSON ICON AND SIGN UP FORM CONTAINER ----- */}
 
       <div
-        className="d-block justify-content-between d-xs-block d-sm-block d-md-flex d-lg-flex d-xl-flex align-items-center authContainer"
+        className="d-flex justify-content-between align-items-center authContainer"
         style={{ width: "70%" }}
       >
         {/*  --- PERSON ICON ---  */}
@@ -82,7 +82,7 @@ const Signup = (props) => {
 
         {/* ---- SIGN UP FORM ----   */}
 
-        <div className="mt-3">
+        <div style={{ width: "100%", margin: "0 auto", padding: "10px" }}>
           <Form
             style={{ maxWidth: "300px", margin: "0 auto" }}
             onSubmit={handleSubmit}
@@ -169,7 +169,7 @@ const Signup = (props) => {
 
             <Button
               variant="primary"
-              style={{ boxShadow: "none" }}
+              style={{ boxShadow: "none", width: "100%" }}
               type="submit"
             >
               Sign Up

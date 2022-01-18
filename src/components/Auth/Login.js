@@ -64,7 +64,7 @@ const Login = ({ setAlert, setNavProgress }) => {
     >
       {/* ---- PERSON ICON AND LOGIN FORM CONTAINER ----- */}
       <div
-        className="d-block justify-content-between d-xs-block d-sm-block d-md-flex d-lg-flex d-xl-flex align-items-center authContainer"
+        className="d-flex justify-content-between align-items-center authContainer"
         style={{ width: "70%" }}
       >
         {/*  --- PERSON ICON ---  */}
@@ -75,7 +75,7 @@ const Login = ({ setAlert, setNavProgress }) => {
 
         {/* --- LOGIN FORM --- */}
 
-        <div style={{ width: "100%", margin: "0 auto", marginRight: "50px" }}>
+        <div style={{ width: "100%", margin: "0 auto", padding: "10px" }}>
           <Form
             style={{ maxWidth: "300px", margin: "0 auto" }}
             onSubmit={handleSubmit}
