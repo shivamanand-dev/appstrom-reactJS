@@ -4,6 +4,10 @@
 
 /* -------------------------Custom CSS-------------------------- */
 
+textarea {
+  resize: none;
+}
+
 /* GRADIENT BACKGROUND */
 
 .gradientBackground {

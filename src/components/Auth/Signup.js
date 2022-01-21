@@ -120,6 +120,9 @@ const Signup = ({ setAlert, setNavProgress }) => {
                 value={credential.email}
                 required
               />
+              <Form.Text className="text-muted">
+                We'll never share your email with anyone else.
+              </Form.Text>
             </Form.Group>
 
             <Form.Group className="mb-3">
@@ -149,6 +152,21 @@ const Signup = ({ setAlert, setNavProgress }) => {
             </Form.Group>
 
             <Form.Group className="mb-3">
+              <Form.Label htmlFor="confirmPassword">
+                Confirm Password
+              </Form.Label>
+              <Form.Control
+                // onChange={handleOnChange}
+                type="password"
+                placeholder="Re-enter Password"
+                // name="password"
+                // value={credential.password}
+                // required
+                // minLength={7}
+              />
+            </Form.Group>
+
+            <Form.Group className="mb-3">
               <Form.Label htmlFor="appliedPromocode">PromoCode</Form.Label>
               <Form.Control
                 onChange={handleOnChange}
@@ -160,19 +178,26 @@ const Signup = ({ setAlert, setNavProgress }) => {
               />
             </Form.Group>
 
-            <Form.Group className="mb-3">
-              <Link to="/login" style={{ boxShadow: "none" }}>
-                Allready Registered? Log In
-              </Link>
-            </Form.Group>
+            {/* SIGN UP BUTTON */}
 
             <Button
+              className="authFormBtnTrans"
               variant="primary"
               style={{ boxShadow: "none", width: "100%" }}
               type="submit"
             >
-              Sign Up
+              <span>SIGN UP</span>
             </Button>
+
+            <Form.Group style={{ margin: "20px 40px" }} className="mb-3">
+              Already Registered? <span> </span>
+              <Link
+                to="/login"
+                style={{ boxShadow: "none", textDecoration: "none" }}
+              >
+                Log in
+              </Link>
+            </Form.Group>
           </Form>
         </div>
       </div>

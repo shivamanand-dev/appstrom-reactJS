@@ -33,9 +33,11 @@ const MainNavbar = () => {
         className="fixed-top"
       >
         <Container className="container">
-          <Navbar.Brand style={{ fontSize: "25px", fontWeight: "500" }}>
+          {/* <Navbar.Brand style={{ fontSize: "25px", fontWeight: "500" }}> */}
+            <Link to="/" style={{textDecoration: "none"}}><Navbar.Brand style={{ fontSize: "25px", fontWeight: "500" }}>
             AppStrom
-          </Navbar.Brand>
+          </Navbar.Brand></Link>
+          {/* </Navbar.Brand> */}
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">
             {/* Nav Links */}
@@ -117,16 +119,16 @@ const MainNavbar = () => {
               location.pathname === "/login" ? (
                 <Link
                   to="/signup"
-                  className="btn btn-outline-primary mx-1"
-                  style={{ boxShadow: "none" }}
+                  className="btn btn-outline-primary mx-1 authFormBtnTrans"
+                  style={{ boxShadow: "none", width: "85px" }}
                 >
                   Sign up
                 </Link>
               ) : location.pathname === "/signup" ? (
                 <Link
                   to="/login"
-                  className="btn btn-outline-primary mx-1"
-                  style={{ boxShadow: "none" }}
+                  className="btn btn-outline-primary mx-1 authFormBtnTrans"
+                  style={{ boxShadow: "none", width: "85px" }}
                 >
                   Log in
                 </Link>
@@ -134,15 +136,18 @@ const MainNavbar = () => {
                 <>
                   <Link
                     to="/login"
-                    className="btn btn-outline-primary mx-1"
-                    style={{ boxShadow: "none" }}
+                    className="btn btn-outline-primary mx-1 authFormBtnTrans"
+                    style={{ boxShadow: "none", width: "85px" }}
                   >
                     Log in
                   </Link>
                   <Link
                     to="/signup"
-                    className="btn btn-outline-primary mx-1"
-                    style={{ boxShadow: "none" }}
+                    className="btn btn-outline-primary mx-1 authFormBtnTrans"
+                    style={{
+                      boxShadow: "none",
+                      width: "85px",
+                    }}
                   >
                     Sign up
                   </Link>
@@ -151,7 +156,7 @@ const MainNavbar = () => {
             ) : (
               <Button
                 variant="outline-danger"
-                className="mx-1"
+                className="mx-1 authFormBtnTrans"
                 onClick={handleLogout}
               >
                 Log Out
