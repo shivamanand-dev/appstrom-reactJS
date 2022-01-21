@@ -5,7 +5,7 @@
 /* -------------------------Custom CSS-------------------------- */
 
 textarea {
-  resize: none;
+  resize: none !important;
 }
 
 /* GRADIENT BACKGROUND */
