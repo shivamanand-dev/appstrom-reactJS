@@ -87,6 +87,22 @@ const MainNavbar = () => {
                     Profile
                   </Link>
                   <Link
+                    to="/elaichi"
+                    className={`nav-link mx-1 ${
+                      location.pathname === "/elaichi" ? "active" : ""
+                    }`}
+                  >
+                    Elaichi
+                  </Link>
+                  <Link
+                    to="/activity"
+                    className={`nav-link mx-1 ${
+                      location.pathname === "/activity" ? "active" : ""
+                    }`}
+                  >
+                    Activity Tracker
+                  </Link>
+                  <Link
                     to="/about"
                     className={`nav-link mx-1 ${
                       location.pathname === "/about" ? "active" : ""

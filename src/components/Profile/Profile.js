@@ -38,6 +38,10 @@ const Profile = ({ fetchUsers, userData, setNavProgress }) => {
                 <Link to="/activity" className="btn btn-secondary">
                   Activity Tracker
                 </Link>
+
+                <Link to="/elaichi" className="btn btn-secondary">
+                  Elaichi
+                </Link>
               </div>
             </>
           )}

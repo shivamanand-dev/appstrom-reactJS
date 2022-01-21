@@ -13,6 +13,7 @@ import { useSelector } from "react-redux";
 import Activity from "./components/ActivityTracker/Activity";
 import ContactUs from "./components/GlobalUi/ContactUs";
 import Footer from "./components/GlobalUi/Footer";
+import Elaichi from "./components/Elaichi/Elaichi";
 
 function App() {
   // const [progress, setProgress] = useState(0);
@@ -43,6 +44,8 @@ function App() {
             <Route exact path="/profile" element={<Profile />}></Route>
             {/* ACTIVITY */}
             <Route exact path="/activity" element={<Activity />}></Route>
+            {/* Elaichi */}
+            <Route exact path="/elaichi" element={<Elaichi />}></Route>
           </Routes>
         </div>
         <Footer />
