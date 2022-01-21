@@ -32,6 +32,7 @@
   border-radius: 10px;
   /* padding-top: 100px; */
   margin-bottom: 50px;
+  width: 70%;
 }
 
 /* AUTH FORM BUTTON TRANSITION */
@@ -85,11 +86,55 @@
   transform: scale(0.1, 1);
 }
 
+/* Custom Scroll */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 5px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background-image: linear-gradient(
+    135deg,
+    hsl(208deg 32% 67%) 0%,
+    hsl(217deg 20% 86%) 42%,
+    hsl(331deg 100% 88%) 68%,
+    hsl(19deg 100% 66%) 84%,
+    hsl(234deg 23% 26%) 100%
+  );
+  border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background-image: linear-gradient(
+    135deg,
+    hsl(208deg 32% 67%) 0%,
+    hsl(217deg 20% 86%) 42%,
+    hsl(331deg 100% 88%) 68%,
+    hsl(19deg 100% 66%) 84%,
+    hsl(234deg 23% 26%) 100%
+  );
+}
+
+/* Tablet view */
 @media screen and (max-width: 992px) {
   .navbar {
     background: rgba(255, 255, 255, 0.452);
   }
   .displayNone {
     display: none;
+  }
+}
+
+/* Mobile View */
+@media screen and (max-width: 620px) {
+  .authContainer {
+    width: 90%;
   }
 }

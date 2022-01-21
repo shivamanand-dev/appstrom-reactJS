@@ -6,7 +6,7 @@ import { connect } from "react-redux";
 import { setAlert } from "../../redux";
 import { setNavProgress } from "../../redux";
 
-const Signup = (props) => {
+const Signup = ({ setAlert, setNavProgress }) => {
   const baseURL = process.env.REACT_APP_AUTH_BASE_URL;
   // State on change
   const [credential, setCredential] = useState({
@@ -27,7 +27,7 @@ const Signup = (props) => {
   // HandleSubmit
   const handleSubmit = async (e) => {
     e.preventDefault();
-    props.setNavProgress(3);
+    setNavProgress(3);
     // Fetch
     const response = await fetch(`${baseURL}/signup`, {
       method: "POST",
@@ -36,9 +36,9 @@ const Signup = (props) => {
       },
       body: JSON.stringify(credential),
     });
-    props.setNavProgress(70);
+    setNavProgress(70);
     const resJSON = await response.json();
-    // console.log(resJSON);
+    console.log(resJSON);
 
     if (resJSON.success) {
       localStorage.setItem("token", resJSON.authToken);
@@ -47,6 +47,8 @@ const Signup = (props) => {
       setAlert("Logged in successfully", "success");
     } else {
       // props.showAlert(resJSON.error, "danger");
+      setAlert(resJSON.errors[0].msg, "danger");
+      setNavProgress(100);
       // props.setNavProgress(100);
     }
   };
@@ -72,7 +74,7 @@ const Signup = (props) => {
 
       <div
         className="d-flex justify-content-between align-items-center authContainer"
-        style={{ width: "70%" }}
+        style={{ padding: "15px" }}
       >
         {/*  --- PERSON ICON ---  */}
 
@@ -82,7 +84,15 @@ const Signup = (props) => {
 
         {/* ---- SIGN UP FORM ----   */}
 
-        <div style={{ width: "100%", margin: "0 auto", padding: "10px" }}>
+        <div
+          style={{
+            width: "100%",
+            margin: "0 auto",
+            padding: "10px",
+            height: "90%",
+            overflowY: "scroll",
+          }}
+        >
           <Form
             style={{ maxWidth: "300px", margin: "0 auto" }}
             onSubmit={handleSubmit}
@@ -149,17 +159,6 @@ const Signup = (props) => {
                 minLength={3}
               />
             </Form.Group>
-
-            {/* <Form.Group className="mb-3">
-          <Form.Label htmlFor="promocode">Your PromoCode</Form.Label>
-          <Form.Control
-            type="text"
-            placeholder="PromoCode"
-            name="promocode"
-            onChange={handleOnChange}
-            value={credential.username}
-          />
-        </Form.Group> */}
 
             <Form.Group className="mb-3">
               <Link to="/login" style={{ boxShadow: "none" }}>
