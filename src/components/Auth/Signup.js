@@ -47,7 +47,7 @@ const Signup = ({ setAlert, setNavProgress }) => {
       setAlert("Logged in successfully", "success");
     } else {
       // props.showAlert(resJSON.error, "danger");
-      setAlert(resJSON.errors[0].msg, "danger");
+      setAlert(resJSON.error, "danger");
       setNavProgress(100);
       // props.setNavProgress(100);
     }
