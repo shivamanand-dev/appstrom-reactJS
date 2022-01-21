@@ -1,9 +1,9 @@
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import MainNavbar from "./components/MainNavbar";
-import About from "./components/About";
-import Home from "./components/Home";
-import Alert from "./components/Alert";
+import MainNavbar from "./components/GlobalUi/MainNavbar";
+import About from "./components/GlobalUi/About";
+import Home from "./components/GlobalUi/Home";
+import Alert from "./components/GlobalUi/Alert";
 import React from "react";
 import Login from "./components/Auth/Login";
 import Signup from "./components/Auth/Signup";
@@ -11,8 +11,8 @@ import LoadingBar from "react-top-loading-bar";
 import Profile from "./components/Profile/Profile";
 import { useSelector } from "react-redux";
 import Activity from "./components/ActivityTracker/Activity";
-import ContactUs from "./components/ContactUs";
-import Footer from "./components/Footer";
+import ContactUs from "./components/GlobalUi/ContactUs";
+import Footer from "./components/GlobalUi/Footer";
 
 function App() {
   // const [progress, setProgress] = useState(0);

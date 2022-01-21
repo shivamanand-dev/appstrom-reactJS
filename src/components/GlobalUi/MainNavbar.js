@@ -14,9 +14,11 @@ const MainNavbar = () => {
     localStorage.removeItem("token");
     navigate("/login");
   };
+
   return (
     <div>
       <Navbar
+        collapseOnSelect
         expand="lg"
         bg={`${
           location.pathname === "/login" || location.pathname === "/signup"
@@ -30,7 +32,7 @@ const MainNavbar = () => {
         }`}
         className="fixed-top"
       >
-        <Container fluid className="container">
+        <Container className="container">
           <Navbar.Brand style={{ fontSize: "25px", fontWeight: "500" }}>
             AppStrom
           </Navbar.Brand>

@@ -43,8 +43,8 @@ const Login = ({ setAlert, setNavProgress }) => {
       setNavProgress(100);
       // props.setNavProgress(100);
     } else {
-      // props.showAlert(resJSON.error, "danger");
-      // props.setNavProgress(100);
+      setAlert(resJSON.error, "danger");
+      setNavProgress(100);
     }
   };
 
