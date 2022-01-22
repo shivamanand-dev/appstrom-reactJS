@@ -48,6 +48,7 @@ function App() {
             <Route exact path="/elaichi" element={<Elaichi />}></Route>
           </Routes>
         </div>
+        <div style={{ height: "130px" }}></div>
         <Footer />
       </Router>
     </div>
