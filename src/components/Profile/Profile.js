@@ -13,7 +13,10 @@ const Profile = ({ fetchUsers, userData, setNavProgress }) => {
   }, []);
 
   return (
-    <>
+    <div
+      className="gradientBackground"
+      style={{ display: "flex", justifyContent: "center" }}
+    >
       {!localStorage.getItem("token") ? (
         <div>
           <p>Log in First</p>
@@ -47,7 +50,7 @@ const Profile = ({ fetchUsers, userData, setNavProgress }) => {
           )}
         </>
       )}
-    </>
+    </div>
   );
 };
 
