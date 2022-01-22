@@ -3,6 +3,8 @@ import { connect } from "react-redux";
 import { fetchUsers } from "../../redux";
 import { setNavProgress } from "../../redux";
 import { Link } from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { Form, Button } from "react-bootstrap";
 
 const Profile = ({ fetchUsers, userData, setNavProgress }) => {
   useEffect(() => {
@@ -14,8 +16,10 @@ const Profile = ({ fetchUsers, userData, setNavProgress }) => {
 
   return (
     <div
-      className="gradientBackground"
-      style={{ display: "flex", justifyContent: "center" }}
+      style={{
+        display: "flex",
+        justifyContent: "center",
+      }}
     >
       {!localStorage.getItem("token") ? (
         <div>
@@ -28,9 +32,98 @@ const Profile = ({ fetchUsers, userData, setNavProgress }) => {
           ) : userData.error ? (
             <p>{userData.error}</p>
           ) : (
-            <>
-              <h2>Profile Details:</h2>
-              <div>
+            <div>
+              {/* --------------------------  PROFILE MAIN SECTION ------------------------ */}
+              <div
+                className="d-flex justify-content-between align-items-center gradientBackground"
+                style={{ width: "100%", height: "fit-content" }}
+              >
+                {/* ------ PROFILE PHOTO ICON ------ */}
+                <div
+                  className="text-center displayNone"
+                  style={{ width: "100%" }}
+                >
+                  <i
+                    class="bi bi-person-fill"
+                    style={{ fontSize: "200px" }}
+                  ></i>
+                </div>
+
+                {/* ------ PROFILE DETAILS SECTION ----- */}
+
+                <div
+                  style={{ width: "100%", margin: "0 auto", padding: "10px" }}
+                >
+                  {/*      ----- ROW 1 -----     */}
+                  <div className="d-flex align-items-baseline">
+                    {/* SHOWS NAME */}
+                    <div className="mx-3">
+                      <p style={{ fontSize: "30px", fontWeight: "500" }}>
+                        {userData.users.name}
+                      </p>
+                    </div>
+
+                    {/* EDIT PROFILE BUTTON */}
+                    <div>
+                      <Button
+                        className="p-1 mb-2"
+                        style={{
+                          width: "105px",
+                          borderColor: "#B1B1B1",
+                          color: "black",
+                          fontWeight: "500",
+                          fontSize: "15px",
+                        }}
+                        variant="outline"
+                      >
+                        Edit Profile
+                      </Button>
+                    </div>
+                  </div>
+
+                  {/*       ----- ROW 2 -----      */}
+
+                  <div className="d-flex">
+                    {/* DISPLAYS TOTAL NO. OF TWEETS */}
+
+                    <button
+                      style={{ width: "110px" }}
+                      type="button"
+                      className="btn btn-secondary btn-sm"
+                    >
+                      0 tweets
+                    </button>
+
+                    {/* DISPLAYS TOTAL NO. OF FOLLOWERS */}
+
+                    <button
+                      style={{ width: "110px" }}
+                      type="button"
+                      className="btn btn-secondary btn-sm mx-3"
+                    >
+                      {userData.users.followers} 0 Followers
+                    </button>
+
+                    {/* DISPLAYS TOTAL NO. OF FOLLOWING */}
+
+                    <button
+                      style={{ width: "110px" }}
+                      type="button"
+                      className="btn btn-secondary btn-sm"
+                    >
+                      {userData.users.followers} 0 Following
+                    </button>
+                  </div>
+
+                  {/*       ----- ROW 3 -----      */}
+                  <div className="d-flex my-1 mt-4">
+                    <p>@{userData.users.username}</p>
+                    <i className="bi bi-geo-fill mx-5"></i> {userData.users.location}
+                    <i className="bi bi-calendar3"></i> {userData.users.dateOfBirth}
+                  </div>
+                </div>
+              </div>
+              {/* <div>
                 <p>Name: {userData.users.name}</p>
                 <p>E-Mail: {userData.users.email}</p>
                 <p>Username: {userData.users.username}</p>
@@ -45,8 +138,8 @@ const Profile = ({ fetchUsers, userData, setNavProgress }) => {
                 <Link to="/elaichi" className="btn btn-secondary">
                   Elaichi
                 </Link>
-              </div>
-            </>
+              </div> */}
+            </div>
           )}
         </>
       )}
