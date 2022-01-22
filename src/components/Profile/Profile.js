@@ -58,9 +58,12 @@ const Profile = ({ fetchUsers, userData, setNavProgress }) => {
                   <div className="d-flex align-items-baseline">
                     {/* SHOWS NAME */}
                     <div className="mx-3">
-                      <p style={{ fontSize: "30px", fontWeight: "500" }}>
+                      <h2
+                        className="m-0"
+                        style={{ fontSize: "30px", fontWeight: "500" }}
+                      >
                         {userData.users.name}
-                      </p>
+                      </h2>
                     </div>
 
                     {/* EDIT PROFILE BUTTON */}
@@ -82,6 +85,23 @@ const Profile = ({ fetchUsers, userData, setNavProgress }) => {
                   </div>
 
                   {/*       ----- ROW 2 -----      */}
+
+                  <div>
+                    {/* SHOWS USERNAME */}
+                    <p
+                      style={{
+                        position: "relative",
+                        bottom: "10px",
+                        fontSize: "16px",
+                        color: "rgb(63 68 73)",
+                      }}
+                      className="mx-3"
+                    >
+                      @{userData.users.username}
+                    </p>
+                  </div>
+
+                  {/*       ----- ROW 3 -----      */}
 
                   <div className="d-flex">
                     {/* DISPLAYS TOTAL NO. OF TWEETS */}
@@ -115,11 +135,18 @@ const Profile = ({ fetchUsers, userData, setNavProgress }) => {
                     </button>
                   </div>
 
-                  {/*       ----- ROW 3 -----      */}
+                  {/*       ----- ROW 4 -----      */}
                   <div className="d-flex my-1 mt-4">
-                    <p>@{userData.users.username}</p>
-                    <i className="bi bi-geo-fill mx-5"></i> {userData.users.location}
-                    <i className="bi bi-calendar3"></i> {userData.users.dateOfBirth}
+                    <i
+                      style={{ marginLeft: "20px", marginRight: "7px" }}
+                      className="bi bi-geo-fill mr-1"
+                    ></i>{" "}
+                    {userData.users.location}
+                    <i
+                      style={{ marginLeft: "20px", marginRight: "7px" }}
+                      className="bi bi-calendar3"
+                    ></i>{" "}
+                    {userData.users.dateOfBirth}
                   </div>
                 </div>
               </div>
