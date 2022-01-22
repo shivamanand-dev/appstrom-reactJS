@@ -24,7 +24,12 @@ const ElaichiCard = (props) => {
             return (
               <Card key={e._id} className="my-3">
                 <Card.Body>
-                  <Card.Title>{e.name}</Card.Title>
+                  <Card.Title>
+                    {e.name} -{" "}
+                    <span style={{ fontSize: "14px", fontWeight: "400" }}>
+                      {e.time}
+                    </span>
+                  </Card.Title>
                   <Card.Text>{e.elaichi}</Card.Text>
                   {/* <Button variant="primary">Go somewhere</Button> */}
                 </Card.Body>
