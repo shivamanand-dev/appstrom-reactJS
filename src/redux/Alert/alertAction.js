@@ -6,7 +6,7 @@ export const setAlert = (message, type) => {
     dispatch(setAlertMessage(alertMessage));
     setTimeout(() => {
       dispatch(setAlertNull());
-    }, 1500);
+    }, 3000);
   };
 };
 
