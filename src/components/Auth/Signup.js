@@ -17,6 +17,7 @@ const Signup = ({ setAlert, setNavProgress }) => {
     promocode: "",
     appliedPromocode: "",
     openningBalance: 0,
+    gender: "",
   });
 
   document.title = "AppStrom - Sign Up";
@@ -165,6 +166,46 @@ const Signup = ({ setAlert, setNavProgress }) => {
                 // minLength={7}
               />
             </Form.Group>
+
+            <Form.Group className="mb-3">
+              <Form.Label htmlFor="location">Location</Form.Label>
+              <Form.Control
+                onChange={handleOnChange}
+                type="text"
+                placeholder="Bharat"
+                name="location"
+                value={credential.location}
+                required
+                minLength={3}
+              />
+            </Form.Group>
+
+            <Form.Group className="mb-3">
+              <Form.Label htmlFor="dateOfBirth">Date Of Birth</Form.Label>
+              <Form.Control
+                onChange={handleOnChange}
+                type="date"
+                placeholder="Bharat"
+                name="dateOfBirth"
+                value={credential.dateOfBirth}
+                minLength={3}
+              />
+            </Form.Group>
+
+            <div className="d-flex align-items-center">
+              {/* Select */}
+              <label htmlFor="elaichiType">Gender</label>
+              <select
+                className="form-select border border-0"
+                onChange={handleOnChange}
+                name="elaichiType"
+                defaultValue={credential.gender}
+                style={{ boxShadow: "none" }}
+              >
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+              </select>
+            </div>
 
             <Form.Group className="mb-3">
               <Form.Label htmlFor="appliedPromocode">PromoCode</Form.Label>
