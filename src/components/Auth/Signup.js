@@ -18,6 +18,7 @@ const Signup = ({ setAlert, setNavProgress }) => {
     appliedPromocode: "",
     openningBalance: 0,
     gender: "",
+    dateOfBirth: "",
   });
 
   document.title = "AppStrom - Sign Up";
@@ -175,8 +176,6 @@ const Signup = ({ setAlert, setNavProgress }) => {
                 placeholder="Bharat"
                 name="location"
                 value={credential.location}
-                required
-                minLength={3}
               />
             </Form.Group>
 
@@ -185,10 +184,8 @@ const Signup = ({ setAlert, setNavProgress }) => {
               <Form.Control
                 onChange={handleOnChange}
                 type="date"
-                placeholder="Bharat"
                 name="dateOfBirth"
                 value={credential.dateOfBirth}
-                minLength={3}
               />
             </Form.Group>
 
