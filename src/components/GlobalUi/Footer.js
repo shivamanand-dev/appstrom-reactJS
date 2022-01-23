@@ -26,27 +26,16 @@ const Footer = () => {
               className="nav col-md-4 justify-content-end list-unstyled d-flex"
             >
               <li className="ms-3 mx-3">
-                <a
-                  className="text-muted"
-                  href="https://twitter.com/shivamanand_dev"
-                >
+                <a className="text-muted" href="https://twitter.com/app_strom">
                   <i style={{ color: "#1DA1F2" }} className="bi bi-twitter"></i>
                 </a>
               </li>
               <li className="ms-3 mx-3">
                 <a
                   className="text-muted"
-                  href="https://www.instagram.com/shivamanand.dev/"
+                  href="https://www.instagram.com/appstrom.app/"
                 >
                   <i style={instaGradient} className="bi bi-instagram"></i>
-                </a>
-              </li>
-              <li className="ms-3">
-                <a
-                  className="text-muted"
-                  href="https://www.facebook.com/shivam.jackson252/"
-                >
-                  <i style={{ color: "#006de9" }} className="bi bi-meta"></i>
                 </a>
               </li>
             </ul>
