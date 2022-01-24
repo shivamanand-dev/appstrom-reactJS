@@ -66,6 +66,7 @@ const Profile = ({
                 style={{
                   width: "100%",
                   height: "400px",
+                  zIndex:"10"
                 }}
               >
                 {/* ------ PROFILE PHOTO ICON ------ */}
@@ -105,7 +106,7 @@ const Profile = ({
                           borderColor: "#B1B1B1",
                           color: "black",
                           fontWeight: "500",
-                          fontSize: "15px",
+                          fontSize: "15px"
                         }}
                         variant="outline"
                       >
@@ -167,15 +168,14 @@ const Profile = ({
 
                   {/*       ----- ROW 4 -----      */}
                   <div className="d-flex my-1 mt-4">
-                    <i
+                    <span
                       style={{ marginLeft: "20px", marginRight: "7px" }}
-                      className="bi bi-geo-fill mr-1"
-                    ></i>
+                      // className="bi bi-geo-fill mr-1"
+                    >📍</span>
                     {userData.users.location}
-                    <i
+                    <span
                       style={{ marginLeft: "20px", marginRight: "7px" }}
-                      className="bi bi-calendar3"
-                    ></i>
+                    >🎂</span>
                     {dateConvert(userData.users.dateOfBirth)}
                   </div>
                 </div>

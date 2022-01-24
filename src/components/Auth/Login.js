@@ -87,7 +87,7 @@ const Login = ({ setAlert, setNavProgress }) => {
               <Form.Control
                 type="text"
                 minLength={5}
-                // placeholder="Enter Username or Email"
+                placeholder="email id or username"
                 required
                 onChange={handleOnchange}
                 name="username"
@@ -104,7 +104,7 @@ const Login = ({ setAlert, setNavProgress }) => {
               <Form.Control
                 type="password"
                 minLength={7}
-                // placeholder="Enter Password"
+                placeholder="Enter your Password"
                 required
                 onChange={handleOnchange}
                 name="password"
