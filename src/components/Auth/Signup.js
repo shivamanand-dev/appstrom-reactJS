@@ -19,6 +19,7 @@ const Signup = ({ setAlert, setNavProgress }) => {
     openningBalance: 0,
     gender: "",
     dateOfBirth: "",
+    location: "MilkyWay Galaxy",
   });
 
   document.title = "AppStrom - Sign Up";
@@ -153,7 +154,7 @@ const Signup = ({ setAlert, setNavProgress }) => {
               />
             </Form.Group>
 
-            <Form.Group className="mb-3">
+            {/* <Form.Group className="mb-3">
               <Form.Label htmlFor="confirmPassword">
                 Confirm Password
               </Form.Label>
@@ -166,7 +167,7 @@ const Signup = ({ setAlert, setNavProgress }) => {
                 // required
                 // minLength={7}
               />
-            </Form.Group>
+            </Form.Group> */}
 
             <Form.Group className="mb-3">
               <Form.Label htmlFor="location">Location</Form.Label>
@@ -191,7 +192,7 @@ const Signup = ({ setAlert, setNavProgress }) => {
 
             <div className="d-flex align-items-center">
               {/* Select */}
-              <label htmlFor="elaichiType">Gender</label>
+              <label htmlFor="elaichiType">Gender </label>
               <select
                 className="form-select border border-0"
                 onChange={handleOnChange}
