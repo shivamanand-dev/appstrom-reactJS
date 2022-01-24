@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Button, Form } from "react-bootstrap";
 import ElaichiCard from "../GlobalUi/Card/ElaichiCard";
@@ -8,6 +9,10 @@ import { setNavProgress } from "../../redux";
 import { connect } from "react-redux";
 
 const Elaichi = ({ getAllElaichi, setNavProgress }) => {
+  useEffect(() => {
+    getAllElaichi();
+  }, []);
+
   const [elaichiInput, setElaichiInput] = useState({
     elaichi: "",
     elaichiType: "public",
@@ -47,7 +52,7 @@ const Elaichi = ({ getAllElaichi, setNavProgress }) => {
     <div style={{ maxWidth: "500px", margin: "0 auto" }}>
       {/* Elaichi wala Form */}
       <Form
-        className="mb-3 p-3 pb-0 border border-bottom-0 border-secondary rounded"
+        className="mb-3 p-3 pb-0 border border-bottom-0 border-secondary rounded bg-light"
         onSubmit={handleOnSubmit}
       >
         <Form.Group>
@@ -61,7 +66,7 @@ const Elaichi = ({ getAllElaichi, setNavProgress }) => {
             rows={3}
           />
         </Form.Group>
-        <div className="d-flex justify-content-between">
+        <div className="d-flex justify-content-between pb-3">
           <div className="d-flex align-items-center">
             {/* Select */}
             <label htmlFor="elaichiType">

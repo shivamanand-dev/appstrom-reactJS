@@ -1,23 +1,46 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect } from "react";
+import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Card } from "react-bootstrap";
 import { useSelector } from "react-redux";
 
 const ElaichiCard = (props) => {
-  useEffect(() => {
-    props.getAllElaichi();
-  }, []);
+  // UseState
 
+  // Elaichi State coming from Store
   const elaichState = useSelector((state) => state.elaichi);
-
   const elaichiArr = elaichState.elaichi;
+
+  // Function to convert time
+  const dateConvert = (time) => {
+    const now = new Date();
+    const date = new Date(time);
+
+    const difference = now - date;
+
+    const timeInMin = Math.round(difference / 60000);
+
+    if (timeInMin < 60) {
+      return timeInMin + " min";
+    } else {
+      const timeInHr = Math.round(timeInMin / 60);
+      if (timeInHr < 24) {
+        return timeInHr + " hr";
+      } else {
+        return Math.round(timeInHr / 24) + " days";
+      }
+    }
+  };
 
   //   console.log(elaichState);
   return (
     <>
       {elaichState.loading === true ? (
-        <h2>Loading...</h2>
+        <>
+          <div className="spinner-border text-success" role="status">
+            <span className="visually-hidden">Loading...</span>
+          </div>
+        </>
       ) : (
         <div>
           {elaichiArr.map((e) => {
@@ -27,7 +50,7 @@ const ElaichiCard = (props) => {
                   <Card.Title>
                     {e.name} -{" "}
                     <span style={{ fontSize: "14px", fontWeight: "400" }}>
-                      {e.time}
+                      {dateConvert(e.time)} ago
                     </span>
                   </Card.Title>
                   <Card.Text>{e.elaichi}</Card.Text>
