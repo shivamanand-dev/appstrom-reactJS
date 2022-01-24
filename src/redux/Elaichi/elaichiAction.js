@@ -22,6 +22,25 @@ export const getAllElaichi = () => {
   };
 };
 
+export const getPersonalElaichi = () => {
+  return (dispatch) => {
+    dispatch(fetchElaichiRequest());
+    axios
+      .get(`${REACT_APP_ELAICHI_BASE_URL}/profile`, {
+        headers: {
+          "auth-token": localStorage.getItem("token"),
+        },
+      })
+      .then((res) => {
+        const elaichi = res.data;
+        dispatch(fetchElaichiSuccess(elaichi));
+      })
+      .catch((error) => {
+        dispatch(fetchElaichiFailure(error.message));
+      });
+  };
+};
+
 export const fetchElaichiRequest = () => {
   return {
     type: FETCH_ELAICHI_REQUEST,

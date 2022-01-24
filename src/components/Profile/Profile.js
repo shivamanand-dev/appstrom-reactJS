@@ -2,17 +2,43 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { fetchUsers } from "../../redux";
 import { setNavProgress } from "../../redux";
+import { getPersonalElaichi } from "../../redux";
 import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Form, Button } from "react-bootstrap";
+import { Button } from "react-bootstrap";
+import ElaichiCard from "../GlobalUi/Card/ElaichiCard";
 
-const Profile = ({ fetchUsers, userData, setNavProgress }) => {
+const Profile = ({
+  fetchUsers,
+  userData,
+  setNavProgress,
+  getPersonalElaichi,
+}) => {
   useEffect(() => {
     setNavProgress(50);
     fetchUsers();
+    setNavProgress(70);
+    getPersonalElaichi();
     setNavProgress(100);
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  const dateConvert = (time) => {
+    const date = new Date(time);
+
+    // const difference = now - date;
+
+    // const timeInMin = Math.round(difference / 60000);
+
+    return (
+      date.getDate() +
+      " " +
+      date.toLocaleString("UTC", { month: "long" }) +
+      ", " +
+      date.getFullYear()
+    );
+  };
 
   return (
     <div
@@ -36,7 +62,10 @@ const Profile = ({ fetchUsers, userData, setNavProgress }) => {
               {/* --------------------------  PROFILE MAIN SECTION ------------------------ */}
               <div
                 className="d-flex justify-content-between align-items-center gradientBackground"
-                style={{ width: "100%", height: "fit-content" }}
+                style={{
+                  width: "100%",
+                  height: "400px",
+                }}
               >
                 {/* ------ PROFILE PHOTO ICON ------ */}
                 <div
@@ -44,7 +73,7 @@ const Profile = ({ fetchUsers, userData, setNavProgress }) => {
                   style={{ width: "100%" }}
                 >
                   <i
-                    class="bi bi-person-fill"
+                    className="bi bi-person-fill"
                     style={{ fontSize: "200px" }}
                   ></i>
                 </div>
@@ -140,16 +169,18 @@ const Profile = ({ fetchUsers, userData, setNavProgress }) => {
                     <i
                       style={{ marginLeft: "20px", marginRight: "7px" }}
                       className="bi bi-geo-fill mr-1"
-                    ></i>{" "}
+                    ></i>
                     {userData.users.location}
                     <i
                       style={{ marginLeft: "20px", marginRight: "7px" }}
                       className="bi bi-calendar3"
-                    ></i>{" "}
-                    {userData.users.dateOfBirth}
+                    ></i>
+                    {dateConvert(userData.users.dateOfBirth)}
                   </div>
                 </div>
               </div>
+              <div style={{ height: "300px" }}></div>
+              <ElaichiCard />
               {/* <div>
                 <p>Name: {userData.users.name}</p>
                 <p>E-Mail: {userData.users.email}</p>
@@ -178,6 +209,7 @@ const mapStateToProps = (state) => {
   return {
     userData: state.user,
     progress: state.progress.progress,
+    elaichi: state.elaichi,
   };
 };
 
@@ -185,6 +217,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     fetchUsers: () => dispatch(fetchUsers()),
     setNavProgress: (progress) => dispatch(setNavProgress(progress)),
+    getPersonalElaichi: () => dispatch(getPersonalElaichi()),
   };
 };
 
