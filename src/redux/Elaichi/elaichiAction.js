@@ -7,11 +7,11 @@ import {
 
 const REACT_APP_ELAICHI_BASE_URL = process.env.REACT_APP_ELAICHI_BASE_URL;
 
-export const getAllElaichi = () => {
+export const getAllElaichi = (page) => {
   return (dispatch) => {
     dispatch(fetchElaichiRequest());
     axios
-      .get(`${REACT_APP_ELAICHI_BASE_URL}/`)
+      .get(`${REACT_APP_ELAICHI_BASE_URL}/${page}`)
       .then((res) => {
         const elaichi = res.data;
         dispatch(fetchElaichiSuccess(elaichi));

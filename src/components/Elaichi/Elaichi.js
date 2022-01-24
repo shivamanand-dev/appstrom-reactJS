@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Button, Form } from "react-bootstrap";
 import ElaichiCard from "../GlobalUi/Card/ElaichiCard";
@@ -8,10 +8,10 @@ import { getAllElaichi } from "../../redux";
 import { setNavProgress } from "../../redux";
 import { connect } from "react-redux";
 
-const Elaichi = ({ getAllElaichi, setNavProgress }) => {
-  useEffect(() => {
-    getAllElaichi();
-  }, []);
+const Elaichi = ({ getAllElaichi, setNavProgress, elaichi }) => {
+  // useEffect(() => {
+  //   getAllElaichi(0);
+  // }, []);
 
   const [elaichiInput, setElaichiInput] = useState({
     elaichi: "",
@@ -38,7 +38,7 @@ const Elaichi = ({ getAllElaichi, setNavProgress }) => {
     });
     setNavProgress(50);
 
-    getAllElaichi();
+    getAllElaichi(0);
 
     setNavProgress(70);
 
@@ -103,7 +103,9 @@ const Elaichi = ({ getAllElaichi, setNavProgress }) => {
         </div>
       </Form>
 
-      <ElaichiCard getAllElaichi={getAllElaichi} />
+      <div>
+        <ElaichiCard url={REACT_APP_ELAICHI_BASE_URL} />
+      </div>
     </div>
   );
 };
@@ -117,7 +119,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getAllElaichi: () => dispatch(getAllElaichi()),
+    getAllElaichi: (page) => dispatch(getAllElaichi(page)),
     setNavProgress: (progress) => dispatch(setNavProgress(progress)),
   };
 };
