@@ -25,13 +25,19 @@ const ElaichiCard = (props) => {
     const url = `${props.url}/${page}`;
 
     // Axios
-    await axios.get(`${url}`).then((res) => {
-      const elaichi = res.data.elaichi;
-      const totalElaichis = res.data.totalElaichis;
+    await axios
+      .get(`${url}`, {
+        headers: {
+          "auth-token": localStorage.getItem("token"),
+        },
+      })
+      .then((res) => {
+        const elaichi = res.data.elaichi;
+        const totalElaichis = res.data.totalElaichis;
 
-      setElaichis(elaichi);
-      setTotalResults(totalElaichis);
-    });
+        setElaichis(elaichi);
+        setTotalResults(totalElaichis);
+      });
 
     setPage(page + 1);
 
@@ -44,13 +50,19 @@ const ElaichiCard = (props) => {
     setPage(page + 1);
 
     // Axios
-    await axios.get(`${url}`).then((res) => {
-      const elaichi = res.data.elaichi;
-      const totalElaichis = res.data.totalElaichis;
+    await axios
+      .get(`${url}`, {
+        headers: {
+          "auth-token": localStorage.getItem("token"),
+        },
+      })
+      .then((res) => {
+        const elaichi = res.data.elaichi;
+        const totalElaichis = res.data.totalElaichis;
 
-      setElaichis(elaichis.concat(elaichi));
-      setTotalResults(totalElaichis);
-    });
+        setElaichis(elaichis.concat(elaichi));
+        setTotalResults(totalElaichis);
+      });
   };
 
   // Function to convert time

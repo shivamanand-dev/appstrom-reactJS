@@ -25,6 +25,8 @@ const Profile = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  const REACT_APP_ELAICHI_BASE_URL = process.env.REACT_APP_ELAICHI_BASE_URL;
+
   const dateConvert = (time) => {
     const date = new Date(time);
 
@@ -66,7 +68,7 @@ const Profile = ({
                 style={{
                   width: "100%",
                   height: "400px",
-                  zIndex:"10"
+                  zIndex: "10",
                 }}
               >
                 {/* ------ PROFILE PHOTO ICON ------ */}
@@ -106,7 +108,7 @@ const Profile = ({
                           borderColor: "#B1B1B1",
                           color: "black",
                           fontWeight: "500",
-                          fontSize: "15px"
+                          fontSize: "15px",
                         }}
                         variant="outline"
                       >
@@ -171,17 +173,19 @@ const Profile = ({
                     <span
                       style={{ marginLeft: "20px", marginRight: "7px" }}
                       // className="bi bi-geo-fill mr-1"
-                    >📍</span>
+                    >
+                      📍
+                    </span>
                     {userData.users.location}
-                    <span
-                      style={{ marginLeft: "20px", marginRight: "7px" }}
-                    >🎂</span>
+                    <span style={{ marginLeft: "20px", marginRight: "7px" }}>
+                      🎂
+                    </span>
                     {dateConvert(userData.users.dateOfBirth)}
                   </div>
                 </div>
               </div>
               <div style={{ height: "300px" }}></div>
-              <ElaichiCard />
+              <ElaichiCard url={`${REACT_APP_ELAICHI_BASE_URL}/profile`} />
               {/* <div>
                 <p>Name: {userData.users.name}</p>
                 <p>E-Mail: {userData.users.email}</p>
