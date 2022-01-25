@@ -190,7 +190,8 @@ const Profile = ({
 
 
               <div style={{ height: "300px", width: "25%" }}></div>
-              <ElaichiCard url={`${REACT_APP_ELAICHI_BASE_URL}/profile`} />
+              <div style={{maxWidth: "500px"}}><ElaichiCard url={`${REACT_APP_ELAICHI_BASE_URL}/profile`} /></div>
+              
               {/* <div>
                 <p>Name: {userData.users.name}</p>
                 <p>E-Mail: {userData.users.email}</p>
