@@ -69,12 +69,15 @@ const Profile = ({
                   width: "100%",
                   height: "400px",
                   zIndex: "10",
+                  display: "flex",
                 }}
               >
                 {/* ------ PROFILE PHOTO ICON ------ */}
                 <div
-                  className="text-center displayNone"
-                  style={{ width: "100%" }}
+                  className="text-end displayNone"
+                  style={{
+                    width: "100%",
+                  }}
                 >
                   <i
                     className="bi bi-person-fill"
@@ -164,7 +167,7 @@ const Profile = ({
                       type="button"
                       className="btn btn-secondary btn-sm"
                     >
-                      {userData.users.followers} 0 Following
+                      {userData.users.followers}0 Following
                     </button>
                   </div>
 
@@ -184,7 +187,9 @@ const Profile = ({
                   </div>
                 </div>
               </div>
-              <div style={{ height: "300px" }}></div>
+
+
+              <div style={{ height: "300px", width: "25%" }}></div>
               <ElaichiCard url={`${REACT_APP_ELAICHI_BASE_URL}/profile`} />
               {/* <div>
                 <p>Name: {userData.users.name}</p>
