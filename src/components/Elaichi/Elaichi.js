@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Button, Form } from "react-bootstrap";
-import ElaichiCard from "../GlobalUi/Card/ElaichiCard";
+import ElaichiCardHandler from "./ElaichiCardHandler";
 import axios from "axios";
 import { getAllElaichi } from "../../redux";
 import { setNavProgress } from "../../redux";
@@ -104,7 +104,7 @@ const Elaichi = ({ getAllElaichi, setNavProgress, elaichi }) => {
       </Form>
 
       <div>
-        <ElaichiCard url={REACT_APP_ELAICHI_BASE_URL} />
+        <ElaichiCardHandler url={REACT_APP_ELAICHI_BASE_URL} />
       </div>
     </div>
   );
