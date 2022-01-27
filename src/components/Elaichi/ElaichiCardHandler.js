@@ -1,7 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
-import { Card } from "react-bootstrap";
 import InfiniteScroll from "react-infinite-scroll-component";
 import axios from "axios";
 import SpinnerLoading from "../GlobalUi/SpinnerJs/SpinnerLoading";
