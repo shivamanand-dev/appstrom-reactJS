@@ -48,9 +48,11 @@ const Profile = ({
           ) : (
             <div>
               <ProfileCard userData={userData} />
-              <ElaichiCardHandler
-                url={`${REACT_APP_ELAICHI_BASE_URL}/profile`}
-              />
+              <div style={{ maxWidth: "500px", minWidth:'300px' }}>
+                <ElaichiCardHandler
+                  url={`${REACT_APP_ELAICHI_BASE_URL}/profile`}
+                />
+              </div>
               {/* <div>
                 <p>Name: {userData.users.name}</p>
                 <p>E-Mail: {userData.users.email}</p>
