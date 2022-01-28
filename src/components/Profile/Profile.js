@@ -46,9 +46,16 @@ const Profile = ({
           ) : userData.error ? (
             <p>{userData.error}</p>
           ) : (
-            <div>
-              <ProfileCard userData={userData} />
-              <div style={{ maxWidth: "500px", minWidth:'300px' }}>
+            <div
+            >
+              <div><ProfileCard userData={userData} /></div>
+              
+              <div
+                style={{
+                  maxWidth: "550px",
+                  minWidth: "300px",
+                }}
+              >
                 <ElaichiCardHandler
                   url={`${REACT_APP_ELAICHI_BASE_URL}/profile`}
                 />

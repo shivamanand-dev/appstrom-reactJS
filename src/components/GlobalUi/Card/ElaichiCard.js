@@ -27,14 +27,14 @@ const ElaichiCard = (props) => {
   return (
     <div>
       <Card className="my-3">
-        <Card.Body>
+        <Card.Body className="shadow fastTransition">
           <Card.Title>
             <span style={{ cursor: "pointer" }}>{element.name} - </span>
             <span style={{ fontSize: "14px", fontWeight: "400" }}>
               {dateConvert(element.time)} ago
             </span>
           </Card.Title>
-          <Card.Text>{element.elaichi}</Card.Text>
+          <div><Card.Text>{element.elaichi}</Card.Text></div>
           {/* <Button variant="primary">Go somewhere</Button> */}
         </Card.Body>
       </Card>
