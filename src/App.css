@@ -98,12 +98,11 @@ footer {
 
 /* PROFILE CARD TRANSITION */
 .customShadow {
-  background: #fff;
+  background: #ffffffbd;
 }
 .customShadow:hover {
   box-shadow: 0 0 10px 0 rgb(194, 190, 190);
 }
-
 
 /* Custom Scroll */
 ::-webkit-scrollbar {
