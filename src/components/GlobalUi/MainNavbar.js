@@ -34,9 +34,11 @@ const MainNavbar = () => {
       >
         <Container className="container">
           {/* <Navbar.Brand style={{ fontSize: "25px", fontWeight: "500" }}> */}
-            <Link to="/" style={{textDecoration: "none"}}><Navbar.Brand style={{ fontSize: "25px", fontWeight: "500" }}>
-            AppStrom
-          </Navbar.Brand></Link>
+          <Link to="/" style={{ textDecoration: "none" }}>
+            <Navbar.Brand style={{ fontSize: "25px", fontWeight: "500" }}>
+              AppStrom
+            </Navbar.Brand>
+          </Link>
           {/* </Navbar.Brand> */}
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">
@@ -81,9 +83,9 @@ const MainNavbar = () => {
               ) : (
                 <>
                   <Link
-                    to="/profile"
+                    to="/myprofile"
                     className={`nav-link mx-1 ${
-                      location.pathname === "/profile" ? "active" : ""
+                      location.pathname === "/myprofile" ? "active" : ""
                     }`}
                   >
                     Profile
@@ -105,12 +107,12 @@ const MainNavbar = () => {
                     Activity Tracker
                   </Link>
                   <Link
-                    to="/about"
+                    to="/contactus"
                     className={`nav-link mx-1 ${
-                      location.pathname === "/about" ? "active" : ""
+                      location.pathname === "/contactus" ? "active" : ""
                     }`}
                   >
-                    About
+                    Contact Us
                   </Link>
                 </>
               )}

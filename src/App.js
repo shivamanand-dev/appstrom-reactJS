@@ -14,6 +14,7 @@ import Activity from "./components/ActivityTracker/Activity";
 import ContactUs from "./components/GlobalUi/ContactUs";
 import Footer from "./components/GlobalUi/Footer";
 import Elaichi from "./components/Elaichi/Elaichi";
+import VisitProfile from "./components/Profile/VisitProfile";
 
 function App() {
   // const [progress, setProgress] = useState(0);
@@ -41,11 +42,13 @@ function App() {
             {/* Sign up */}
             <Route exact path="/signup" element={<Signup />}></Route>
             {/* PROFILE */}
-            <Route exact path="/profile" element={<Profile />}></Route>
+            <Route exact path="/myprofile" element={<Profile />}></Route>
             {/* ACTIVITY */}
             <Route exact path="/activity" element={<Activity />}></Route>
             {/* Elaichi */}
             <Route exact path="/elaichi" element={<Elaichi />}></Route>
+            {/* Visit Profile */}
+            <Route exact path="/profile" element={<VisitProfile />}></Route>
           </Routes>
         </div>
         <Footer />
