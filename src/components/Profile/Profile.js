@@ -46,10 +46,11 @@ const Profile = ({
           ) : userData.error ? (
             <p>{userData.error}</p>
           ) : (
-            <div
-            >
-              <div><ProfileCard userData={userData} /></div>
-              
+            <div>
+              <div>
+                <ProfileCard userData={userData} />
+              </div>
+
               <div
                 style={{
                   maxWidth: "550px",

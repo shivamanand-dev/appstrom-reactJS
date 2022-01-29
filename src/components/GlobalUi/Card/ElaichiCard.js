@@ -26,15 +26,24 @@ const ElaichiCard = (props) => {
   };
   return (
     <div>
-      <Card className="my-3">
-        <Card.Body className="shadow fastTransition">
+      <Card
+        style={{
+          padding: "10px",
+          background: "transparent",
+          border: "none"
+        }}
+        className="my-1"
+      >
+        <Card.Body style={{borderRadius: "5px"}} className="customShadow">
           <Card.Title>
             <span style={{ cursor: "pointer" }}>{element.name} - </span>
             <span style={{ fontSize: "14px", fontWeight: "400" }}>
               {dateConvert(element.time)} ago
             </span>
           </Card.Title>
-          <div><Card.Text>{element.elaichi}</Card.Text></div>
+          <div>
+            <Card.Text>{element.elaichi}</Card.Text>
+          </div>
           {/* <Button variant="primary">Go somewhere</Button> */}
         </Card.Body>
       </Card>
