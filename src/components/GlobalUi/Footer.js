@@ -16,8 +16,8 @@ const Footer = () => {
         }}
       ></div>
       <div>
-        <footer className="bg-dark py-3 text-light">
-          <div className="container d-flex flex-wrap justify-content-between align-items-center py-3 border-top">
+        <footer className="bg-dark py-1 text-light">
+          <div className="container d-flex flex-wrap justify-content-between align-items-center py-1 border-top">
             <div className="col-md-4 d-flex align-items-center">
               <Link
                 to="/"
