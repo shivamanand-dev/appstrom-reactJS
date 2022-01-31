@@ -4,11 +4,10 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Button, Form } from "react-bootstrap";
 import ElaichiCardHandler from "./ElaichiCardHandler";
 import axios from "axios";
-import { getAllElaichi } from "../../redux";
 import { setNavProgress } from "../../redux";
 import { connect } from "react-redux";
 
-const Elaichi = ({ getAllElaichi, setNavProgress, elaichi }) => {
+const Elaichi = ({ setNavProgress }) => {
   // useEffect(() => {
   //   getAllElaichi(0);
   // }, []);
@@ -37,10 +36,6 @@ const Elaichi = ({ getAllElaichi, setNavProgress, elaichi }) => {
       },
     });
     setNavProgress(50);
-
-    getAllElaichi(0);
-
-    setNavProgress(70);
 
     setElaichiInput({
       elaichi: "",
@@ -119,7 +114,6 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getAllElaichi: (page) => dispatch(getAllElaichi(page)),
     setNavProgress: (progress) => dispatch(setNavProgress(progress)),
   };
 };

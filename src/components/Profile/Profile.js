@@ -2,25 +2,14 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { fetchUsers } from "../../redux";
 import { setNavProgress } from "../../redux";
-import { getPersonalElaichi } from "../../redux";
-// eslint-disable-next-line no-unused-vars
-import { Link } from "react-router-dom";
-import "bootstrap/dist/css/bootstrap.min.css";
-// import { Button } from "react-bootstrap";
 import ElaichiCardHandler from "../Elaichi/ElaichiCardHandler";
 import ProfileCard from "../GlobalUi/Card/ProfileCard";
 
-const Profile = ({
-  fetchUsers,
-  userData,
-  setNavProgress,
-  getPersonalElaichi,
-}) => {
+const Profile = ({ fetchUsers, userData, setNavProgress }) => {
   useEffect(() => {
     setNavProgress(50);
     fetchUsers();
     setNavProgress(70);
-    getPersonalElaichi();
     setNavProgress(100);
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -61,22 +50,6 @@ const Profile = ({
                   url={`${REACT_APP_ELAICHI_BASE_URL}/profile`}
                 />
               </div>
-              {/* <div>
-                <p>Name: {userData.users.name}</p>
-                <p>E-Mail: {userData.users.email}</p>
-                <p>Username: {userData.users.username}</p>
-                <p>Balance: {userData.users.openningBalance}</p>
-                <p>Followers: {userData.users.followers}</p>
-                <p>Following: {userData.users.following}</p>
-
-                <Link to="/activity" className="btn btn-secondary">
-                  Activity Tracker
-                </Link>
-
-                <Link to="/elaichi" className="btn btn-secondary">
-                  Elaichi
-                </Link>
-              </div> */}
             </div>
           )}
         </>
@@ -97,7 +70,6 @@ const mapDispatchToProps = (dispatch) => {
   return {
     fetchUsers: () => dispatch(fetchUsers()),
     setNavProgress: (progress) => dispatch(setNavProgress(progress)),
-    getPersonalElaichi: () => dispatch(getPersonalElaichi()),
   };
 };
 
