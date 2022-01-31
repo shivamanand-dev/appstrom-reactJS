@@ -23,121 +23,124 @@ const ProfileCard = (props) => {
     );
   };
   return (
-    <div>
-      {/* --------------------------  PROFILE MAIN SECTION ------------------------ */}
-      <div
-        className="d-flex justify-content-between align-items-center gradientBackground"
-        style={{
-          width: "100%",
-          height: "400px",
-          zIndex: "10",
-        }}
-      >
-        {/* ------ PROFILE PHOTO ICON ------ */}
-        <div className="text-center displayNone" style={{ width: "100%" }}>
-          <i className="bi bi-person-fill" style={{ fontSize: "200px" }}></i>
-        </div>
+    <>
+      <div className="gradientBackground" style={{ height: "400px" }}>
+        {/* --------------------------  PROFILE MAIN SECTION ------------------------ */}
+        <div
+          className="d-flex justify-content-between align-items-center "
+          style={{
+            width: "500px",
+            margin: "0 auto",
+            zIndex: "10",
+          }}
+        >
+          {/* ------ PROFILE PHOTO ICON ------ */}
+          <div className="text-center displayNone" style={{ width: "100%" }}>
+            <i className="bi bi-person-fill" style={{ fontSize: "200px" }}></i>
+          </div>
 
-        {/* ------ PROFILE DETAILS SECTION ----- */}
+          {/* ------ PROFILE DETAILS SECTION ----- */}
 
-        <div style={{ width: "100%", margin: "0 auto", padding: "10px" }}>
-          {/*      ----- ROW 1 -----     */}
-          <div className="d-flex align-items-baseline">
-            {/* SHOWS NAME */}
-            <div className="mx-3">
-              <h2
-                className="m-0"
-                style={{ fontSize: "30px", fontWeight: "500" }}
-              >
-                {userData.users.name}
-              </h2>
+          <div style={{ width: "100%", margin: "0 auto", padding: "10px" }}>
+            {/*      ----- ROW 1 -----     */}
+            <div className="d-flex align-items-baseline">
+              {/* SHOWS NAME */}
+              <div className="mx-3">
+                <h2
+                  className="m-0"
+                  style={{ fontSize: "30px", fontWeight: "500" }}
+                >
+                  {userData.users.name}
+                </h2>
+              </div>
+
+              {/* EDIT PROFILE BUTTON */}
+              <div>
+                <Button
+                  className="p-1 mb-2"
+                  style={{
+                    width: "105px",
+                    borderColor: "#B1B1B1",
+                    color: "black",
+                    fontWeight: "500",
+                    fontSize: "15px",
+                  }}
+                  variant="outline"
+                >
+                  Edit Profile
+                </Button>
+              </div>
             </div>
 
-            {/* EDIT PROFILE BUTTON */}
+            {/*       ----- ROW 2 -----      */}
+
             <div>
-              <Button
-                className="p-1 mb-2"
+              {/* SHOWS USERNAME */}
+              <p
                 style={{
-                  width: "105px",
-                  borderColor: "#B1B1B1",
-                  color: "black",
-                  fontWeight: "500",
-                  fontSize: "15px",
+                  position: "relative",
+                  bottom: "10px",
+                  fontSize: "16px",
+                  color: "rgb(63 68 73)",
                 }}
-                variant="outline"
+                className="mx-3"
               >
-                Edit Profile
-              </Button>
+                @{userData.users.username}
+              </p>
             </div>
-          </div>
 
-          {/*       ----- ROW 2 -----      */}
+            {/*       ----- ROW 3 -----      */}
 
-          <div>
-            {/* SHOWS USERNAME */}
-            <p
-              style={{
-                position: "relative",
-                bottom: "10px",
-                fontSize: "16px",
-                color: "rgb(63 68 73)",
-              }}
-              className="mx-3"
-            >
-              @{userData.users.username}
-            </p>
-          </div>
+            <div className="d-flex">
+              {/* DISPLAYS TOTAL NO. OF TWEETS */}
 
-          {/*       ----- ROW 3 -----      */}
+              <button
+                style={{ width: "110px" }}
+                type="button"
+                className="btn btn-secondary btn-sm"
+              >
+                0 tweets
+              </button>
 
-          <div className="d-flex">
-            {/* DISPLAYS TOTAL NO. OF TWEETS */}
+              {/* DISPLAYS TOTAL NO. OF FOLLOWERS */}
 
-            <button
-              style={{ width: "110px" }}
-              type="button"
-              className="btn btn-secondary btn-sm"
-            >
-              0 tweets
-            </button>
+              <button
+                style={{ width: "110px" }}
+                type="button"
+                className="btn btn-secondary btn-sm mx-3"
+              >
+                {userData.users.followers} 0 Followers
+              </button>
 
-            {/* DISPLAYS TOTAL NO. OF FOLLOWERS */}
+              {/* DISPLAYS TOTAL NO. OF FOLLOWING */}
 
-            <button
-              style={{ width: "110px" }}
-              type="button"
-              className="btn btn-secondary btn-sm mx-3"
-            >
-              {userData.users.followers} 0 Followers
-            </button>
+              <button
+                style={{ width: "110px" }}
+                type="button"
+                className="btn btn-secondary btn-sm"
+              >
+                {userData.users.followers} 0 Following
+              </button>
+            </div>
 
-            {/* DISPLAYS TOTAL NO. OF FOLLOWING */}
-
-            <button
-              style={{ width: "110px" }}
-              type="button"
-              className="btn btn-secondary btn-sm"
-            >
-              {userData.users.followers} 0 Following
-            </button>
-          </div>
-
-          {/*       ----- ROW 4 -----      */}
-          <div className="d-flex my-1 mt-4">
-            <span
-              style={{ marginLeft: "20px", marginRight: "7px" }}
-              // className="bi bi-geo-fill mr-1"
-            >
-              📍
-            </span>
-            {userData.users.location}
-            <span style={{ marginLeft: "20px", marginRight: "7px" }}>🎂</span>
-            {dateConvert(userData.users.dateOfBirth)}
+            {/*       ----- ROW 4 -----      */}
+            <div className="d-flex my-1 mt-4">
+              <span
+                style={{ marginLeft: "20px", marginRight: "7px" }}
+                // className="bi bi-geo-fill mr-1"
+              >
+                📍
+              </span>
+              {userData.users.location}
+              <span style={{ marginLeft: "20px", marginRight: "7px" }}>🎂</span>
+              {dateConvert(userData.users.dateOfBirth)}
+            </div>
           </div>
         </div>
       </div>
+
       <div style={{ height: "300px" }}></div>
-    </div>
+    </>
   );
 };
 

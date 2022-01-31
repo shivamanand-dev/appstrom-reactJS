@@ -62,9 +62,6 @@ const Signup = ({ setAlert, setNavProgress }) => {
       ...credential,
       [e.target.name]: e.target.value,
     });
-
-    // console.log(credential, "cred");
-    // console.log(e.target.name, ":", e.target.value);
   };
 
   return (
