@@ -37,7 +37,7 @@ const Login = ({ setAlert, setNavProgress }) => {
 
     if (resJSON.success) {
       localStorage.setItem("token", resJSON.authToken);
-      navigate("/profile");
+      navigate("/myprofile");
       setAlert("Logged in successfully", "success");
       // props.showAlert("Logged in successfully", "success");
       setNavProgress(100);

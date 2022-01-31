@@ -45,7 +45,7 @@ const Signup = ({ setAlert, setNavProgress }) => {
 
     if (resJSON.success) {
       localStorage.setItem("token", resJSON.authToken);
-      navigate("/profile");
+      navigate("/myprofile");
       // props.setNavProgress(100);
       setAlert("Logged in successfully", "success");
     } else {
@@ -102,7 +102,7 @@ const Signup = ({ setAlert, setNavProgress }) => {
           >
             <Form.Group className="mb-3">
               <Form.Label style={{ fontWeight: "500" }} htmlFor="name">
-                Name<span style={{color: "#dd1919"}}>*</span>
+                Name<span style={{ color: "#dd1919" }}>*</span>
               </Form.Label>
               <Form.Control
                 onChange={handleOnChange}
@@ -117,7 +117,7 @@ const Signup = ({ setAlert, setNavProgress }) => {
 
             <Form.Group className="mb-3">
               <Form.Label style={{ fontWeight: "500" }} htmlFor="email">
-                Email address<span style={{color: "#dd1919"}}>*</span>
+                Email address<span style={{ color: "#dd1919" }}>*</span>
               </Form.Label>
               <Form.Control
                 onChange={handleOnChange}
@@ -134,7 +134,7 @@ const Signup = ({ setAlert, setNavProgress }) => {
 
             <Form.Group className="mb-3">
               <Form.Label style={{ fontWeight: "500" }} htmlFor="username">
-                Username<span style={{color: "#dd1919"}}>*</span>
+                Username<span style={{ color: "#dd1919" }}>*</span>
               </Form.Label>
               <Form.Control
                 onChange={handleOnChange}
@@ -149,7 +149,7 @@ const Signup = ({ setAlert, setNavProgress }) => {
 
             <Form.Group className="mb-3">
               <Form.Label style={{ fontWeight: "500" }} htmlFor="password">
-                Password<span style={{color: "#dd1919"}}>*</span>
+                Password<span style={{ color: "#dd1919" }}>*</span>
               </Form.Label>
               <Form.Control
                 onChange={handleOnChange}
@@ -243,7 +243,12 @@ const Signup = ({ setAlert, setNavProgress }) => {
             </div>
 
             <Form.Group className="mb-3">
-              <Form.Label style={{ fontWeight: "500" }} htmlFor="appliedPromocode">Promo Code</Form.Label>
+              <Form.Label
+                style={{ fontWeight: "500" }}
+                htmlFor="appliedPromocode"
+              >
+                Promo Code
+              </Form.Label>
               <Form.Control
                 onChange={handleOnChange}
                 type="text"
