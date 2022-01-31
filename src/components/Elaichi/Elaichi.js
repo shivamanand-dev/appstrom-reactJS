@@ -47,7 +47,8 @@ const Elaichi = ({ setNavProgress }) => {
     <div style={{ maxWidth: "500px", margin: "0 auto" }}>
       {/* Elaichi wala Form */}
       <Form
-        className="mb-3 p-3 pb-0 border border-bottom-0 border-secondary rounded bg-light"
+        className="mb-3 p-3 pb-0 rounded"
+        style={{ background: "#fff" }}
         onSubmit={handleOnSubmit}
       >
         <Form.Group>
@@ -61,7 +62,7 @@ const Elaichi = ({ setNavProgress }) => {
             rows={3}
           />
         </Form.Group>
-        <div className="d-flex justify-content-between pb-3">
+        <div className="d-flex justify-content-between pb-3 mt-3">
           <div className="d-flex align-items-center">
             {/* Select */}
             <label htmlFor="elaichiType">
@@ -74,7 +75,7 @@ const Elaichi = ({ setNavProgress }) => {
               )}
             </label>
             <select
-              className="form-select border border-0"
+              className="form-select border border-0 mx-1"
               onChange={handleOnChange}
               name="elaichiType"
               defaultValue={elaichiInput.elaichiType}
@@ -88,7 +89,7 @@ const Elaichi = ({ setNavProgress }) => {
           {/* Post Button */}
           <Button
             variant="outline-dark"
-            className="rounded-pill"
+            className="rounded"
             style={{ boxShadow: "none", width: "100px" }}
             type="submit"
             disabled={elaichiInput.elaichi === "" ? true : false}

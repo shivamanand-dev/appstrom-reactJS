@@ -1,9 +1,13 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Card } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 
 const ElaichiCard = (props) => {
   const element = props.element;
+
+  // navigate
+  const navigate = useNavigate();
   // Function to convert time
   const dateConvert = (time) => {
     const now = new Date();
@@ -24,19 +28,26 @@ const ElaichiCard = (props) => {
       }
     }
   };
+
+  // handleVisitProfile
+  const handleVisitProfile = () => {
+    navigate("/profile", { state: { username: element.username } });
+  };
   return (
     <div>
       <Card
         style={{
           padding: "10px",
           background: "transparent",
-          border: "none"
+          border: "none",
         }}
         className="my-1"
       >
-        <Card.Body style={{borderRadius: "5px"}} className="customShadow">
+        <Card.Body style={{ borderRadius: "5px" }} className="customShadow">
           <Card.Title>
-            <span style={{ cursor: "pointer" }}>{element.name} - </span>
+            <span style={{ cursor: "pointer" }} onClick={handleVisitProfile}>
+              {element.name} -{" "}
+            </span>
             <span style={{ fontSize: "14px", fontWeight: "400" }}>
               {dateConvert(element.time)} ago
             </span>
