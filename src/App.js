@@ -18,7 +18,7 @@ import VisitProfile from "./components/Profile/VisitProfile";
 
 function App() {
   // const [progress, setProgress] = useState(0);
-  const state = useSelector((state) => state.progress);
+  const progress = useSelector((state) => state.progress);
 
   // const setNavProgress = (progress) => {
   //   setProgress(progress);
@@ -32,7 +32,7 @@ function App() {
         <Alert />
         <div style={{ height: "50px" }}></div>
         <div className="container mt-3">
-          <LoadingBar color="#f11946" height={2} progress={state.progress} />
+          <LoadingBar color="#f11946" height={2} progress={progress.progress} />
           <Routes>
             <Route exact path="/" element={<Home />}></Route>
             <Route exact path="/contactus" element={<ContactUs />}></Route>
@@ -48,7 +48,7 @@ function App() {
             {/* Elaichi */}
             <Route exact path="/elaichi" element={<Elaichi />}></Route>
             {/* Visit Profile */}
-            <Route exact path="/profile" element={<VisitProfile />}></Route>
+            <Route exact path={`/profile/`} element={<VisitProfile />}></Route>
           </Routes>
         </div>
         <Footer />

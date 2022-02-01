@@ -5,8 +5,6 @@ import { Button } from "react-bootstrap";
 const ProfileCard = (props) => {
   const userData = props.userData;
 
-  // console.log(userData);
-
   const dateConvert = (time) => {
     const date = new Date(time);
 
@@ -24,24 +22,28 @@ const ProfileCard = (props) => {
   };
   return (
     <>
-      <div className="gradientBackground" style={{ height: "400px" }}>
+      <div
+        className="gradientBackground"
+        style={{ height: "320px", zIndex: "1" }}
+      >
         {/* --------------------------  PROFILE MAIN SECTION ------------------------ */}
         <div
-          className="d-flex justify-content-between align-items-center "
+          className="align-items-center "
           style={{
             width: "500px",
             margin: "0 auto",
-            zIndex: "10",
           }}
         >
           {/* ------ PROFILE PHOTO ICON ------ */}
-          <div className="text-center displayNone" style={{ width: "100%" }}>
+          {/* <div className="text-center displayNone" style={{ width: "100%" }}>
             <i className="bi bi-person-fill" style={{ fontSize: "200px" }}></i>
-          </div>
+          </div> */}
 
           {/* ------ PROFILE DETAILS SECTION ----- */}
 
-          <div style={{ width: "100%", margin: "0 auto", padding: "10px" }}>
+          <div
+            style={{ width: "max-content", margin: "0 auto", padding: "10px" }}
+          >
             {/*      ----- ROW 1 -----     */}
             <div className="d-flex align-items-baseline">
               {/* SHOWS NAME */}
@@ -55,22 +57,44 @@ const ProfileCard = (props) => {
               </div>
 
               {/* EDIT PROFILE BUTTON */}
-              <div>
-                <Button
-                  className="p-1 mb-2"
-                  style={{
-                    width: "105px",
-                    borderColor: "#B1B1B1",
-                    color: "black",
-                    fontWeight: "500",
-                    fontSize: "15px",
-                  }}
-                  variant="outline"
-                >
-                  Edit Profile
-                </Button>
-              </div>
+              {userData.users.username !== localStorage.getItem("username") ? (
+                <div>
+                  <Button
+                    className="p-1 mb-2"
+                    style={{
+                      width: "105px",
+                      borderColor: "#B1B1B1",
+                      color: "black",
+                      fontWeight: "500",
+                      fontSize: "15px",
+                    }}
+                    variant="outline"
+                  >
+                    Follow
+                  </Button>
+                </div>
+              ) : (
+                <>
+                  <div>
+                    <Button
+                      className="p-1 mb-2"
+                      style={{
+                        width: "105px",
+                        borderColor: "#B1B1B1",
+                        color: "black",
+                        fontWeight: "500",
+                        fontSize: "15px",
+                      }}
+                      variant="outline"
+                    >
+                      Edit Profile
+                    </Button>
+                  </div>
+                </>
+              )}
             </div>
+
+            {/* Follow Button */}
 
             {/*       ----- ROW 2 -----      */}
 
@@ -139,7 +163,9 @@ const ProfileCard = (props) => {
         </div>
       </div>
 
-      <div style={{ height: "300px" }}></div>
+      <div
+        style={{ height: "220px", position: "relative", zIndex: "-1" }}
+      ></div>
     </>
   );
 };

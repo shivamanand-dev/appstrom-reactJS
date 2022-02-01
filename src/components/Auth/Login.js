@@ -40,6 +40,9 @@ const Login = ({ setAlert, setNavProgress }) => {
       navigate("/myprofile");
       setAlert("Logged in successfully", "success");
       // props.showAlert("Logged in successfully", "success");
+      setNavProgress(70);
+      console.log(resJSON.user.username);
+      localStorage.setItem("username", resJSON.user.username);
       setNavProgress(100);
       // props.setNavProgress(100);
     } else {
@@ -65,7 +68,7 @@ const Login = ({ setAlert, setNavProgress }) => {
       {/* ---- PERSON ICON AND LOGIN FORM CONTAINER ----- */}
       <div
         className="d-flex justify-content-between align-items-center authContainer"
-        style={{ width: "70%" }}
+        style={{ padding: "15px" }}
       >
         {/*  --- PERSON ICON ---  */}
 
