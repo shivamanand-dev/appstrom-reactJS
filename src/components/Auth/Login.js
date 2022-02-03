@@ -118,8 +118,8 @@ const Login = ({ setAlert, setNavProgress }) => {
             <Button
               className="authFormBtnTrans"
               variant="primary"
-              style={{ boxShadow: "none", width: "100%" }}
               type="submit"
+              style={{ boxShadow: "none", width: "100%" }}
             >
               <span>LOG IN</span>
             </Button>

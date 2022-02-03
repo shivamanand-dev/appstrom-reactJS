@@ -74,11 +74,15 @@ const AddActivity = ({ getAllActivity, setNavProgress, setAlert }) => {
   };
   return (
     <>
-      <Form onSubmit={handleSubmitActivity}>
+      <Form
+        onSubmit={handleSubmitActivity}
+        className="authContainer"
+        style={{ width: "100%", maxWidth: "600px", padding: "60px" }}
+      >
         <Row className="mb-3">
           <Form.Group as={Col}>
-            <Form.Label htmlFor="name">
-              Name<span style={{ color: "red" }}>*</span>
+            <Form.Label htmlFor="name" style={{ fontWeight: "500" }}>
+              Activity Name<span style={{ color: "red" }}>*</span>
             </Form.Label>
             <Form.Control
               type="text"
@@ -90,7 +94,7 @@ const AddActivity = ({ getAllActivity, setNavProgress, setAlert }) => {
           </Form.Group>
 
           <Form.Group as={Col}>
-            <Form.Label htmlFor="forDays">
+            <Form.Label htmlFor="forDays" style={{ fontWeight: "500" }}>
               For Days<span style={{ color: "red" }}>*</span>
             </Form.Label>
             <Form.Control
@@ -104,7 +108,9 @@ const AddActivity = ({ getAllActivity, setNavProgress, setAlert }) => {
         </Row>
 
         <Form.Group className="mb-3">
-          <Form.Label htmlFor="description">Description</Form.Label>
+          <Form.Label htmlFor="description" style={{ fontWeight: "500" }}>
+            Description
+          </Form.Label>
           <Form.Control
             placeholder="Description"
             as="textarea"
