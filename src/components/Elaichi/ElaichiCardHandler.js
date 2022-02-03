@@ -14,7 +14,7 @@ const ElaichiCardHandler = (props) => {
   // UseEffect
   useEffect(() => {
     fetchElaichi(0);
-  }, []);
+  }, [props.post]);
 
   // fetch Elaichi for the first time
   const fetchElaichi = async (pageZero) => {

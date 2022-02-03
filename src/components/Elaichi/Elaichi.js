@@ -12,6 +12,9 @@ const Elaichi = ({ setNavProgress, setAlert }) => {
   //   getAllElaichi(0);
   // }, []);
 
+  const [post, setPost] = useState(false);
+
+  // Input
   const [elaichiInput, setElaichiInput] = useState({
     elaichi: "",
     elaichiType: "public",
@@ -38,10 +41,14 @@ const Elaichi = ({ setNavProgress, setAlert }) => {
     });
     setNavProgress(50);
 
+    setPost(true);
+
     setElaichiInput({
       elaichi: "",
       elaichiType: "public",
     });
+    setNavProgress(70);
+    setPost(false);
     setNavProgress(100);
   };
   return (
@@ -105,6 +112,7 @@ const Elaichi = ({ setNavProgress, setAlert }) => {
           url={REACT_APP_ELAICHI_BASE_URL}
           setNavProgress={setNavProgress}
           setAlert={setAlert}
+          post={post}
         />
       </div>
     </div>
