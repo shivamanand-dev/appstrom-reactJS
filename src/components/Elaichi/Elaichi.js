@@ -1,13 +1,13 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Button, Form } from "react-bootstrap";
 import ElaichiCardHandler from "./ElaichiCardHandler";
 import axios from "axios";
 import { setNavProgress } from "../../redux";
+import { setAlert } from "../../redux";
 import { connect } from "react-redux";
 
-const Elaichi = ({ setNavProgress }) => {
+const Elaichi = ({ setNavProgress, setAlert }) => {
   // useEffect(() => {
   //   getAllElaichi(0);
   // }, []);
@@ -23,13 +23,14 @@ const Elaichi = ({ setNavProgress }) => {
   //   Handle On change in Input
   const handleOnChange = (e) => {
     // console.log(e.target.name + " : " + e.target.value);
-
     setElaichiInput({ ...elaichiInput, [e.target.name]: e.target.value });
   };
 
   const handleOnSubmit = async (e) => {
     e.preventDefault();
     setNavProgress(30);
+
+    // Post request
     await axios.post(`${REACT_APP_ELAICHI_BASE_URL}/createpost`, elaichiInput, {
       headers: {
         "auth-token": localStorage.getItem("token"),
@@ -100,7 +101,11 @@ const Elaichi = ({ setNavProgress }) => {
       </Form>
 
       <div>
-        <ElaichiCardHandler url={REACT_APP_ELAICHI_BASE_URL} />
+        <ElaichiCardHandler
+          url={REACT_APP_ELAICHI_BASE_URL}
+          setNavProgress={setNavProgress}
+          setAlert={setAlert}
+        />
       </div>
     </div>
   );
@@ -109,12 +114,14 @@ const Elaichi = ({ setNavProgress }) => {
 const mapStateToProps = (state) => {
   return {
     elaichi: state.elaichi,
+    alertState: state.alert,
     progress: state.progress.progress,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
+    setAlert: (message, type) => dispatch(setAlert(message, type)),
     setNavProgress: (progress) => dispatch(setNavProgress(progress)),
   };
 };

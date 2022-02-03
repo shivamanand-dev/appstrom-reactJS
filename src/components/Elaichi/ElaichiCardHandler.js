@@ -7,21 +7,20 @@ import ElaichiCard from "../GlobalUi/Card/ElaichiCard";
 
 const ElaichiCardHandler = (props) => {
   const [page, setPage] = useState(0);
-
   // Saving fetch Data
   const [elaichis, setElaichis] = useState([]);
   const [totalResults, setTotalResults] = useState(0);
   const [loading, setLoading] = useState(true);
   // UseEffect
   useEffect(() => {
-    fetchElaichi();
+    fetchElaichi(0);
   }, []);
 
   // fetch Elaichi for the first time
-  const fetchElaichi = async () => {
+  const fetchElaichi = async (pageZero) => {
     // props.setProgress(10);
     setLoading(true);
-    const url = `${props.url}/${page}`;
+    const url = `${props.url}/${pageZero}`;
 
     // Axios
     await axios
@@ -38,7 +37,7 @@ const ElaichiCardHandler = (props) => {
         setTotalResults(totalElaichis);
       });
 
-    setPage(page + 1);
+    setPage(1);
 
     setLoading(false);
   };
@@ -88,7 +87,15 @@ const ElaichiCardHandler = (props) => {
           >
             {/* Infinite Scroll */}
             {elaichis.map((e) => {
-              return <ElaichiCard key={e._id} element={e} />;
+              return (
+                <ElaichiCard
+                  key={e._id}
+                  element={e}
+                  setAlert={props.setAlert}
+                  setNavProgress={props.setNavProgress}
+                  fetchElaichi={fetchElaichi}
+                />
+              );
             })}
           </InfiniteScroll>
         </>

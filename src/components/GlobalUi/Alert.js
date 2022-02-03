@@ -11,6 +11,7 @@ const Alert = () => {
         position: "fixed",
         top: "63px",
         right: "0",
+        zIndex: "99999",
       }}
     >
       {alertState && (
