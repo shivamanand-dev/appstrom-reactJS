@@ -30,7 +30,7 @@ const ProfileCard = (props) => {
         <div
           className="align-items-center "
           style={{
-            width: "500px",
+            maxWidth: "500px",
             margin: "0 auto",
           }}
         >
@@ -118,13 +118,13 @@ const ProfileCard = (props) => {
             <div className="d-flex">
               {/* DISPLAYS TOTAL NO. OF TWEETS */}
 
-              <button
+              {/* <button
                 style={{ width: "110px" }}
                 type="button"
                 className="btn btn-secondary btn-sm"
               >
                 0 tweets
-              </button>
+              </button> */}
 
               {/* DISPLAYS TOTAL NO. OF FOLLOWERS */}
 
