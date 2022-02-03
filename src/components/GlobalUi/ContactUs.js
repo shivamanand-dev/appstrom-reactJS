@@ -1,8 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Form, Button } from "react-bootstrap";
+import axios from "axios";
 
 const ContactUs = () => {
+  const REACT_APP_CONTACT_EMAIL = process.env.REACT_APP_CONTACT_EMAIL;
+
+  const [message, setMessage] = useState({
+    name: "",
+    email: "",
+    message: "",
+  }); //   Handle On change in Input
+  const handleOnChange = (e) => {
+    // console.log(e.target.name + " : " + e.target.value);
+    setMessage({ ...message, [e.target.name]: e.target.value });
+  };
+  // Handle on submit
+  const handleOnSubmit = async (e) => {
+    e.preventDefault();
+    await axios.post(`${REACT_APP_CONTACT_EMAIL}`, message, {});
+  };
   return (
     <div className="gradientBackground">
       <div
@@ -14,15 +31,27 @@ const ContactUs = () => {
           padding: "60px",
         }}
       >
-        <Form>
+        <Form onSubmit={handleOnSubmit}>
           <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
             <Form.Label style={{ fontWeight: "500" }}>Name</Form.Label>
-            <Form.Control type="text" placeholder="Name" />
+            <Form.Control
+              type="text"
+              placeholder="Name"
+              onChange={handleOnChange}
+              name="name"
+              value={message.name}
+            />
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
             <Form.Label style={{ fontWeight: "500" }}>Email address</Form.Label>
-            <Form.Control type="email" placeholder="name@example.com" />
+            <Form.Control
+              type="email"
+              placeholder="name@example.com"
+              onChange={handleOnChange}
+              name="email"
+              value={message.email}
+            />
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
@@ -31,6 +60,9 @@ const ContactUs = () => {
               as="textarea"
               rows={4}
               placeholder="Type your message here"
+              onChange={handleOnChange}
+              name="message"
+              value={message.message}
             />
           </Form.Group>
           <Button
