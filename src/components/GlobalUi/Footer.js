@@ -10,9 +10,10 @@ const Footer = () => {
     <>
       <div
         style={{
-          height: "130px",
+          height: "50px",
           bottom: "0",
           width: "100%",
+          position: "absolute",
         }}
       ></div>
       <div>
