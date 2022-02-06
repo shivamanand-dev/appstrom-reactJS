@@ -41,7 +41,7 @@ const Login = ({ setAlert, setNavProgress }) => {
       setAlert("Logged in successfully", "success");
       // props.showAlert("Logged in successfully", "success");
       setNavProgress(70);
-      console.log(resJSON.user.username);
+      // console.log(resJSON.user.username);
       localStorage.setItem("username", resJSON.user.username);
       setNavProgress(100);
       // props.setNavProgress(100);
