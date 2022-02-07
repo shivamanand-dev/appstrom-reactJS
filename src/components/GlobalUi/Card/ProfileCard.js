@@ -1,17 +1,17 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Button } from "react-bootstrap";
+import axios from "axios";
 
 const ProfileCard = (props) => {
   const userData = props.userData;
+  const REACT_APP_AUTH_BASE_URL = process.env.REACT_APP_AUTH_BASE_URL;
 
+  let followLabel = "Follow";
+
+  // Date conversion
   const dateConvert = (time) => {
     const date = new Date(time);
-
-    // const difference = now - date;
-
-    // const timeInMin = Math.round(difference / 60000);
-
     return (
       date.getDate() +
       " " +
@@ -19,6 +19,52 @@ const ProfileCard = (props) => {
       ", " +
       date.getFullYear()
     );
+  };
+
+  // Follower Counts
+  let followers = [];
+  let following = [];
+
+  if (userData.users.followers !== undefined) {
+    followers = userData.users.followers;
+    following = userData.users.following;
+  }
+  if (followers.includes(localStorage.getItem("username"))) {
+    console.log(true);
+    followLabel = "Unfollow";
+  }
+  // Handle Follow Request
+  const handleFollowRequest = async (e) => {
+    e.preventDefault();
+    props.setNavProgress(30);
+
+    const url = `${REACT_APP_AUTH_BASE_URL}/updateFollower`;
+    // Data to send
+    let data = {
+      follower: userData.users.username,
+    };
+    props.setNavProgress(50);
+    await axios
+      .put(url, data, {
+        headers: {
+          "auth-token": localStorage.getItem("token"),
+        },
+      })
+      .then((res) => {
+        const resData = res.data;
+        // console.log(resData);
+        if (resData.success === true) {
+          props.setAlert(resData.message, resData.alertStatus);
+        } else {
+          props.setAlert(resData.message, "danger");
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    props.fetchElaichi(0);
+    props.setNavProgress(100);
+    // console.log(REACT_APP_AUTH_BASE_URL);
   };
   return (
     <>
@@ -69,13 +115,14 @@ const ProfileCard = (props) => {
                       fontSize: "15px",
                     }}
                     variant="outline"
+                    onClick={handleFollowRequest}
                   >
-                    Follow
+                    {followLabel}
                   </Button>
                 </div>
               ) : (
                 <>
-                  <div>
+                  {/* <div>
                     <Button
                       className="p-1 mb-2"
                       style={{
@@ -89,7 +136,7 @@ const ProfileCard = (props) => {
                     >
                       Edit Profile
                     </Button>
-                  </div>
+                  </div> */}
                 </>
               )}
             </div>
@@ -133,7 +180,7 @@ const ProfileCard = (props) => {
                 type="button"
                 className="btn btn-secondary btn-sm mx-3"
               >
-                {userData.users.followers} 0 Followers
+                {followers.length} Followers
               </button>
 
               {/* DISPLAYS TOTAL NO. OF FOLLOWING */}
@@ -143,7 +190,7 @@ const ProfileCard = (props) => {
                 type="button"
                 className="btn btn-secondary btn-sm"
               >
-                {userData.users.followers} 0 Following
+                {following.length} Following
               </button>
             </div>
 

@@ -5,8 +5,11 @@ import SpinnerLoading from "../GlobalUi/SpinnerJs/SpinnerLoading";
 import InfiniteScroll from "react-infinite-scroll-component";
 import ElaichiCard from "../GlobalUi/Card/ElaichiCard";
 import ProfileCard from "../GlobalUi/Card/ProfileCard";
+import { connect } from "react-redux";
+import { setAlert } from "../../redux";
+import { setNavProgress } from "../../redux";
 
-const VisitProfile = () => {
+const VisitProfile = ({ setAlert, setNavProgress }) => {
   const { state } = useLocation();
   const { username } = state;
 
@@ -21,15 +24,15 @@ const VisitProfile = () => {
   const [loading, setLoading] = useState(true);
   // UseEffect
   useEffect(() => {
-    fetchElaichi();
+    fetchElaichi(0);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // fetch Elaichi for the first time
-  const fetchElaichi = async () => {
+  const fetchElaichi = async (initialPage) => {
     // props.setProgress(10);
     setLoading(true);
-    const url = `${REACT_APP_AUTH_BASE_URL}/profile/${username}/${page}`;
+    const url = `${REACT_APP_AUTH_BASE_URL}/profile/${username}/${initialPage}`;
 
     // Axios
     await axios
@@ -48,7 +51,7 @@ const VisitProfile = () => {
         setUserInfo(user);
       });
 
-    setPage(page + 1);
+    setPage(1);
 
     setLoading(false);
   };
@@ -82,7 +85,12 @@ const VisitProfile = () => {
         </>
       ) : (
         <>
-          <ProfileCard userData={{ users: userInfo }} />
+          <ProfileCard
+            userData={{ users: userInfo }}
+            fetchElaichi={fetchElaichi}
+            setAlert={setAlert}
+            setNavProgress={setNavProgress}
+          />
           <div
             style={{
               maxWidth: "550px",
@@ -103,7 +111,15 @@ const VisitProfile = () => {
             >
               {/* Infinite Scroll */}
               {elaichis.map((e) => {
-                return <ElaichiCard key={e._id} element={e} />;
+                return (
+                  <ElaichiCard
+                    key={e._id}
+                    element={e}
+                    setNavProgress={setNavProgress}
+                    setAlert={setAlert}
+                    fetchElaichi={fetchElaichi}
+                  />
+                );
               })}
             </InfiniteScroll>
           </div>
@@ -113,4 +129,18 @@ const VisitProfile = () => {
   );
 };
 
-export default VisitProfile;
+const mapStateToProps = (state) => {
+  return {
+    alertState: state.alert,
+    progress: state.progress.progress,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    setAlert: (message, type) => dispatch(setAlert(message, type)),
+    setNavProgress: (progress) => dispatch(setNavProgress(progress)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(VisitProfile);
