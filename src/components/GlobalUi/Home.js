@@ -2,7 +2,7 @@ import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const Home = () => {
-  document.title = "AppStrom - Sign Up";
+  document.title = "AppStrom";
   return <div>Home</div>;
 };
 
