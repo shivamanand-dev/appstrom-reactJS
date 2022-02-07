@@ -232,7 +232,8 @@ const ProfileCard = (props) => {
           {followers.map((e) => {
             return (
               <div key={`${e.following}`}>
-                <p>{e.name}</p>
+                <p className="m-0">Name: {e.name}</p>
+                <p className="m-0">@{e.following}</p>
               </div>
             );
           })}
