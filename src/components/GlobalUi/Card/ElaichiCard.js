@@ -11,8 +11,6 @@ const ElaichiCard = (props) => {
   const setAlert = props.setAlert;
   const setNavProgress = props.setNavProgress;
 
-  // console.log(props.setAlert);
-
   // navigate
   const navigate = useNavigate();
   // Function to convert time
@@ -42,7 +40,6 @@ const ElaichiCard = (props) => {
   };
 
   const handleDeleteElaichi = async () => {
-    console.log(element);
     setNavProgress(10);
 
     await axios.delete(

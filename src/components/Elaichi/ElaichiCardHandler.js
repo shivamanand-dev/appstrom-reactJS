@@ -17,10 +17,10 @@ const ElaichiCardHandler = (props) => {
   }, [props.post]);
 
   // fetch Elaichi for the first time
-  const fetchElaichi = async (pageZero) => {
+  const fetchElaichi = async (initialPage) => {
     // props.setProgress(10);
     setLoading(true);
-    const url = `${props.url}/${pageZero}`;
+    const url = `${props.url}/${initialPage}`;
 
     // Axios
     await axios

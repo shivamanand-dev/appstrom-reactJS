@@ -8,10 +8,6 @@ import { setAlert } from "../../redux";
 import { connect } from "react-redux";
 
 const Elaichi = ({ setNavProgress, setAlert }) => {
-  // useEffect(() => {
-  //   getAllElaichi(0);
-  // }, []);
-
   const [post, setPost] = useState(false);
 
   // Input
