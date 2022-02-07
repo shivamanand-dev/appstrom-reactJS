@@ -2,6 +2,7 @@ import { React, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Navbar, Container, Nav, Button } from "react-bootstrap";
+import logo from "../../assets/images/appstromLogo.png";
 
 const MainNavbar = () => {
   let location = useLocation();
@@ -36,7 +37,7 @@ const MainNavbar = () => {
           {/* <Navbar.Brand style={{ fontSize: "25px", fontWeight: "500" }}> */}
           <Link to="/" style={{ textDecoration: "none" }}>
             <Navbar.Brand style={{ fontSize: "25px", fontWeight: "500" }}>
-              AppStrom
+              <img src={logo} width="100px" alt="appstrom" />
             </Navbar.Brand>
           </Link>
           {/* </Navbar.Brand> */}
