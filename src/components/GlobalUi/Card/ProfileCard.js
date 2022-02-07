@@ -38,8 +38,11 @@ const ProfileCard = (props) => {
     followers = userData.users.followers;
     following = userData.users.following;
   }
-  if (followers.includes(localStorage.getItem("username"))) {
-    console.log(true);
+  if (
+    followers.some((e) => {
+      return e.following === localStorage.getItem("username");
+    })
+  ) {
     followLabel = "Unfollow";
   }
   // Handle Follow Request
@@ -51,6 +54,7 @@ const ProfileCard = (props) => {
     // Data to send
     let data = {
       follower: userData.users.username,
+      name: userData.users.name,
     };
     props.setNavProgress(50);
     await axios
@@ -222,11 +226,15 @@ const ProfileCard = (props) => {
       {/* Followers */}
       <Modal show={showFollower} onHide={handleCloseFollower}>
         <Modal.Header closeButton>
-          <Modal.Title>Your Followers</Modal.Title>
+          <Modal.Title>Followers</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           {followers.map((e) => {
-            return <p>{e}</p>;
+            return (
+              <div key={`${e.following}`}>
+                <p>{e.name}</p>
+              </div>
+            );
           })}
         </Modal.Body>
         <Modal.Footer>
@@ -239,11 +247,16 @@ const ProfileCard = (props) => {
       {/* Following */}
       <Modal show={showFollowing} onHide={handleCloseFollowing}>
         <Modal.Header closeButton>
-          <Modal.Title>You Followings</Modal.Title>
+          <Modal.Title>Followings</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           {following.map((e) => {
-            return <p>{e}</p>;
+            return (
+              <div key={`${e.follower}`}>
+                <p className="m-0">Name: {e.name}</p>
+                <p className="m-0">@{e.follower}</p>
+              </div>
+            );
           })}
         </Modal.Body>
         <Modal.Footer>
