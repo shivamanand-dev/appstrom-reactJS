@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Button } from "react-bootstrap";
+import { Button, Modal } from "react-bootstrap";
 import axios from "axios";
 
 const ProfileCard = (props) => {
@@ -9,6 +9,15 @@ const ProfileCard = (props) => {
 
   let followLabel = "Follow";
 
+  // Bootstrap Modal
+  const [showFollowing, setShowFollowing] = useState(false);
+
+  const handleCloseFollowing = () => setShowFollowing(false);
+  const handleShowFollowing = () => setShowFollowing(true);
+  const [showFollower, setShowFollower] = useState(false);
+
+  const handleCloseFollower = () => setShowFollower(false);
+  const handleShowFollower = () => setShowFollower(true);
   // Date conversion
   const dateConvert = (time) => {
     const date = new Date(time);
@@ -175,23 +184,23 @@ const ProfileCard = (props) => {
 
               {/* DISPLAYS TOTAL NO. OF FOLLOWERS */}
 
-              <button
+              <Button
                 style={{ width: "110px" }}
-                type="button"
                 className="btn btn-secondary btn-sm mx-3"
+                onClick={handleShowFollower}
               >
                 {followers.length} Followers
-              </button>
+              </Button>
 
               {/* DISPLAYS TOTAL NO. OF FOLLOWING */}
 
-              <button
+              <Button
                 style={{ width: "110px" }}
-                type="button"
                 className="btn btn-secondary btn-sm"
+                onClick={handleShowFollowing}
               >
                 {following.length} Following
-              </button>
+              </Button>
             </div>
 
             {/*       ----- ROW 4 -----      */}
@@ -209,6 +218,40 @@ const ProfileCard = (props) => {
           </div>
         </div>
       </div>
+
+      {/* Followers */}
+      <Modal show={showFollower} onHide={handleCloseFollower}>
+        <Modal.Header closeButton>
+          <Modal.Title>Your Followers</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          {followers.map((e) => {
+            return <p>{e}</p>;
+          })}
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleCloseFollower}>
+            Close
+          </Button>
+        </Modal.Footer>
+      </Modal>
+
+      {/* Following */}
+      <Modal show={showFollowing} onHide={handleCloseFollowing}>
+        <Modal.Header closeButton>
+          <Modal.Title>You Followings</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          {following.map((e) => {
+            return <p>{e}</p>;
+          })}
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleCloseFollowing}>
+            Close
+          </Button>
+        </Modal.Footer>
+      </Modal>
 
       <div
         style={{ height: "220px", position: "relative", zIndex: "-1" }}
