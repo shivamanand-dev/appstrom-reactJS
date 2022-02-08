@@ -22,7 +22,7 @@ const Footer = () => {
             <div className="col-md-4 d-flex align-items-center">
               <Link
                 to="/"
-                className="mb-3 me-2 mb-md-0 text-light text-decoration-none lh-1"
+                className="me-2 mb-md-0 text-light text-decoration-none lh-1"
               >
                 <span>
                   © 2022 <img src={logo} alt="appstrom" width="75px" />{" "}
