@@ -1,6 +1,7 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Link, useLocation } from "react-router-dom";
+import logo from "../../assets/images/appstromLogo.png";
 
 const Footer = () => {
   const location = useLocation();
@@ -23,9 +24,10 @@ const Footer = () => {
                 to="/"
                 className="mb-3 me-2 mb-md-0 text-light text-decoration-none lh-1"
               >
-                Logo
+                <span>
+                  © 2022 <img src={logo} alt="appstrom" width="75px" />{" "}
+                </span>
               </Link>
-              <span>© 2021 AppStrom</span>
             </div>
 
             <ul
