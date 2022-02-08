@@ -17,21 +17,21 @@ const MainNavbar = () => {
   };
 
   return (
-    <div>
+    <div >
       <Navbar
         collapseOnSelect
         expand="lg"
-        bg={`${
-          location.pathname === "/login" || location.pathname === "/signup"
-            ? " "
-            : "dark"
-        }`}
+        // bg={`${
+        //   location.pathname === "/login" || location.pathname === "/signup"
+        //     ? " "
+        //     : "dark"
+        // }`}
         variant={`${
           location.pathname === "/login" || location.pathname === "/signup"
-            ? "light"
+            ? "dark"
             : "dark"
         }`}
-        className="fixed-top"
+        className="fixed-top" style={{background: "hsl(210deg,30%,8%)"}}
       >
         <Container className="container">
           {/* <Navbar.Brand style={{ fontSize: "25px", fontWeight: "500" }}> */}
