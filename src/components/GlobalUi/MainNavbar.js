@@ -92,12 +92,12 @@ const MainNavbar = () => {
                     Profile
                   </Link>
                   <Link
-                    to="/elaichi"
+                    to="/appstromshare"
                     className={`nav-link mx-1 ${
-                      location.pathname === "/elaichi" ? "active" : ""
+                      location.pathname === "/appstromshare" ? "active" : ""
                     }`}
                   >
-                    Elaichi
+                    Appstrom Share
                   </Link>
                   <Link
                     to="/activity"

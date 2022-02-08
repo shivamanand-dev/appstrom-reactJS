@@ -46,7 +46,7 @@ function App() {
             {/* ACTIVITY */}
             <Route exact path="/activity" element={<Activity />}></Route>
             {/* Elaichi */}
-            <Route exact path="/elaichi" element={<Elaichi />}></Route>
+            <Route exact path="/appstromshare" element={<Elaichi />}></Route>
             {/* Visit Profile */}
             <Route exact path={`/profile/`} element={<VisitProfile />}></Route>
           </Routes>
