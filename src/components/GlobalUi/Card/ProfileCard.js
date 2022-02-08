@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Button, Modal } from "react-bootstrap";
 import axios from "axios";
+import ModalBodyList from "./ModalBodyList";
+import ModalTitleGlobal from "./ModalTitleGlobal";
+import ModalFooterGlobal from "./ModalFooterGlobal";
 
 const ProfileCard = (props) => {
   const userData = props.userData;
@@ -11,11 +14,10 @@ const ProfileCard = (props) => {
 
   // Bootstrap Modal
   const [showFollowing, setShowFollowing] = useState(false);
-
   const handleCloseFollowing = () => setShowFollowing(false);
   const handleShowFollowing = () => setShowFollowing(true);
-  const [showFollower, setShowFollower] = useState(false);
 
+  const [showFollower, setShowFollower] = useState(false);
   const handleCloseFollower = () => setShowFollower(false);
   const handleShowFollower = () => setShowFollower(true);
   // Date conversion
@@ -225,46 +227,42 @@ const ProfileCard = (props) => {
 
       {/* Followers */}
       <Modal show={showFollower} onHide={handleCloseFollower}>
-        <Modal.Header closeButton>
-          <Modal.Title>Followers</Modal.Title>
-        </Modal.Header>
+        {/* Modal Title */}
+        <ModalTitleGlobal name="Followers" />
+
+        {/* Modal Body */}
         <Modal.Body>
           {followers.map((e) => {
             return (
-              <div key={`${e.following}`}>
-                <p className="m-0">Name: {e.name}</p>
-                <p className="m-0">@{e.following}</p>
-              </div>
+              <ModalBodyList
+                key={`${e.following}`}
+                name={e.name}
+                username={e.following}
+              />
             );
           })}
         </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleCloseFollower}>
-            Close
-          </Button>
-        </Modal.Footer>
+
+        <ModalFooterGlobal button={handleCloseFollower} />
       </Modal>
 
       {/* Following */}
       <Modal show={showFollowing} onHide={handleCloseFollowing}>
-        <Modal.Header closeButton>
-          <Modal.Title>Followings</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          {following.map((e) => {
-            return (
-              <div key={`${e.follower}`}>
-                <p className="m-0">Name: {e.name}</p>
-                <p className="m-0">@{e.follower}</p>
-              </div>
-            );
-          })}
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleCloseFollowing}>
-            Close
-          </Button>
-        </Modal.Footer>
+        {/* Modal Title */}
+        <ModalTitleGlobal name="Following" />
+
+        {/* Modal Body */}
+        {following.map((e) => {
+          return (
+            <ModalBodyList
+              key={`${e.follower}`}
+              name={e.name}
+              username={e.follower}
+            />
+          );
+        })}
+
+        <ModalFooterGlobal button={handleCloseFollowing} />
       </Modal>
 
       <div
