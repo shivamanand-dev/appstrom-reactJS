@@ -80,9 +80,7 @@ const ElaichiCardHandler = (props) => {
             hasMore={elaichis.length !== totalResults}
             loader={<SpinnerLoading />}
             endMessage={
-              <p style={{ textAlign: "center" }}>
-                <b>Yay! You have seen it all</b>
-              </p>
+              <p style={{ textAlign: "center" }}>Yay! You have seen it all</p>
             }
           >
             {/* Infinite Scroll */}

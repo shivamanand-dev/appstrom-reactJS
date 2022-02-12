@@ -92,9 +92,12 @@ const Elaichi = ({ setNavProgress, setAlert }) => {
 
           {/* Post Button */}
           <Button
-            variant="outline-dark"
+            variant="primary"
             className="rounded"
-            style={{ boxShadow: "none", width: "100px" }}
+            style={{
+              boxShadow: "none",
+              width: "100px"
+            }}
             type="submit"
             disabled={elaichiInput.elaichi === "" ? true : false}
           >

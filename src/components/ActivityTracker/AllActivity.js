@@ -61,7 +61,6 @@ const AllActivity = ({
               className="mb-3"
             >
               <Tab eventKey="allActivity" title="All Activity">
-                All Activity
                 {/* CARD - Render All Activity*/}
                 {notCompletedActivity.map((e) => {
                   return (
@@ -78,7 +77,6 @@ const AllActivity = ({
                 })}
               </Tab>
               <Tab eventKey="completedActivity" title="Completed Activity">
-                Completed Activity
                 {/* CARD - Render All Activity*/}
                 {completedActivity.map((e) => {
                   return (

@@ -62,7 +62,6 @@ const Login = ({ setAlert, setNavProgress }) => {
   return (
     //          ------- MAIN GRADIENT BACKGROUND --------
     <div
-      className="gradientBackground"
       style={{ display: "flex", justifyContent: "center" }}
     >
       {/* ---- PERSON ICON AND LOGIN FORM CONTAINER ----- */}

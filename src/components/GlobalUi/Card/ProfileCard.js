@@ -83,10 +83,7 @@ const ProfileCard = (props) => {
   };
   return (
     <>
-      <div
-        className="gradientBackground"
-        style={{ height: "320px", zIndex: "1" }}
-      >
+      <div style={{ height: "215px", zIndex: "1" }}>
         {/* --------------------------  PROFILE MAIN SECTION ------------------------ */}
         <div
           className="align-items-center "
@@ -110,7 +107,6 @@ const ProfileCard = (props) => {
               {/* SHOWS NAME */}
               <div className="mx-3">
                 <h2
-                  className="m-0"
                   style={{ fontSize: "30px", fontWeight: "500" }}
                 >
                   {userData.users.name}
@@ -266,7 +262,7 @@ const ProfileCard = (props) => {
       </Modal>
 
       <div
-        style={{ height: "220px", position: "relative", zIndex: "-1" }}
+        style={{ position: "relative", zIndex: "-1" }}
       ></div>
     </>
   );

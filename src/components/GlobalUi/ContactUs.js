@@ -35,60 +35,59 @@ const ContactUs = ({ setAlert, setNavProgress }) => {
     setNavProgress(100);
   };
   return (
-    <div className="gradientBackground">
-      <div
-        className="authContainer"
-        style={{
-          width: "100%",
-          maxWidth: "500px",
-          margin: "0 auto",
-          padding: "60px",
-        }}
-      >
-        <Form onSubmit={handleOnSubmit}>
-          <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-            <Form.Label style={{ fontWeight: "500" }}>Name</Form.Label>
-            <Form.Control
-              type="text"
-              placeholder="Name"
-              onChange={handleOnChange}
-              name="name"
-              value={message.name}
-            />
-          </Form.Group>
+    <div
+      style={{
+        width: "100%",
+        maxWidth: "500px",
+        margin: "0 auto",
+        padding: "40px 60px",
+        border: "1px solid grey",
+        borderRadius: "5px"
+      }}
+    >
+      <Form onSubmit={handleOnSubmit}>
+        <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+          <Form.Label style={{ fontWeight: "500" }}>Name</Form.Label>
+          <Form.Control
+            type="text"
+            placeholder="Name"
+            onChange={handleOnChange}
+            name="name"
+            value={message.name}
+          />
+        </Form.Group>
 
-          <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-            <Form.Label style={{ fontWeight: "500" }}>Email address</Form.Label>
-            <Form.Control
-              type="email"
-              placeholder="name@example.com"
-              onChange={handleOnChange}
-              name="email"
-              value={message.email}
-            />
-          </Form.Group>
+        <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+          <Form.Label style={{ fontWeight: "500" }}>Email address</Form.Label>
+          <Form.Control
+            type="email"
+            placeholder="name@example.com"
+            onChange={handleOnChange}
+            name="email"
+            value={message.email}
+          />
+        </Form.Group>
 
-          <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-            <Form.Label style={{ fontWeight: "500" }}>Message</Form.Label>
-            <Form.Control
-              as="textarea"
-              rows={4}
-              placeholder="Type your message here"
-              onChange={handleOnChange}
-              name="message"
-              value={message.message}
-            />
-          </Form.Group>
-          <Button
-            className="authFormBtnTrans"
-            variant="primary"
-            type="submit"
-            style={{ width: "100%" }}
-          >
-            Submit
-          </Button>
-        </Form>
-      </div>
+        <Form.Group className="mb-4" controlId="exampleForm.ControlTextarea1">
+          <Form.Label style={{ fontWeight: "500" }}>Message</Form.Label>
+          <Form.Control
+            as="textarea"
+            rows={4}
+            placeholder="Type your message here"
+            onChange={handleOnChange}
+            name="message"
+            value={message.message}
+          />
+        </Form.Group>
+        <Button
+          className="authFormBtnTrans"
+          variant="primary"
+          type="submit"
+          style={{ width: "100%"}}
+        >
+          Submit
+        </Button>
+      </Form>
     </div>
   );
 };

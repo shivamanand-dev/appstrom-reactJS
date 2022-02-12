@@ -67,14 +67,20 @@ const ActivityCard = (props) => {
 
   // UI
   return (
-    <div className="my-3">
-      <Card>
-        <Card.Header className="d-flex justify-content-between">
+    <div className="my-4">
+      <Card
+        style={{
+          background: "#061f22",
+          border: "1px solid grey",
+          borderRadius: "5px"
+        }}
+      >
+        <Card.Header className="d-flex justify-content-between" style={{borderBottom: "1px solid grey"}}>
           <p className="mb-0">
             <span style={{ fontSize: "24px", textTransform: "capitalize" }}>
               {props.activity.name}
             </span>
-            <span className="mx-3" style={{ fontSize: "14px", margin: "0" }}>
+            <span className="mx-3" style={{ fontSize: "14px", margin: "0", color: "grey", fontWeight: "400" }}>
               {dateParsed}
             </span>
           </p>
@@ -102,7 +108,7 @@ const ActivityCard = (props) => {
         </Card.Header>
         <Card.Body>
           <div>
-            <p>{props.activity.description}</p>
+            <p className="mx-2">{props.activity.description}</p>
           </div>
 
           {/* Render Days */}

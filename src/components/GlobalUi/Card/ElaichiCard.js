@@ -65,13 +65,13 @@ const ElaichiCard = (props) => {
         }}
         className="my-1"
       >
-        <Card.Body style={{ borderRadius: "5px" }} className="customShadow">
+        <Card.Body style={{ border: "1px solid grey", borderRadius: "5px" }}>
           <Card.Title className="d-flex justify-content-between">
             <div>
               <span style={{ cursor: "pointer" }} onClick={handleVisitProfile}>
-                {element.name} -{" "}
+                {element.name} {" "}
               </span>
-              <span style={{ fontSize: "14px", fontWeight: "400" }}>
+              <span style={{ fontSize: "14px", fontWeight: "400", color: "grey" }}> - {" "}
                 {dateConvert(element.time)} ago
               </span>
             </div>
@@ -89,7 +89,7 @@ const ElaichiCard = (props) => {
               )}
             </div>
           </Card.Title>
-          <div>
+          <div style={{fontSize: "15px", fontWeight: "100"}}>
             <Card.Text>{element.elaichi}</Card.Text>
           </div>
           {/* <Button variant="primary">Go somewhere</Button> */}

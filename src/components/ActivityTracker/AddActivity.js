@@ -76,8 +76,13 @@ const AddActivity = ({ getAllActivity, setNavProgress, setAlert }) => {
     <>
       <Form
         onSubmit={handleSubmitActivity}
-        className="authContainer"
-        style={{ width: "100%", maxWidth: "600px", padding: "60px" }}
+        style={{
+          width: "100%",
+          maxWidth: "600px",
+          padding: "60px",
+          border: "1px solid grey",
+          borderRadius: "5px",
+        }}
       >
         <Row className="mb-3">
           <Form.Group as={Col}>

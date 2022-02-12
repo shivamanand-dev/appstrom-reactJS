@@ -67,10 +67,7 @@ const Signup = ({ setAlert, setNavProgress }) => {
 
   return (
     //          ------- MAIN GRADIENT BACKGROUND --------
-    <div
-      className="gradientBackground"
-      style={{ display: "flex", justifyContent: "center" }}
-    >
+    <div style={{ display: "flex", justifyContent: "center" }}>
       {/* ---- PERSON ICON AND SIGN UP FORM CONTAINER ----- */}
 
       <div

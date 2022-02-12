@@ -14,7 +14,7 @@ const Activity = () => {
       ) : (
         <>
           <Container>
-            <div style={{maxWidth: "600px", margin: "0 auto" }}>
+            <div style={{ maxWidth: "600px", margin: "0 auto" }}>
               {/* <h2>Activity Tracker</h2> */}
 
               <AddActivity />
